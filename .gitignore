@@ -1,10 +1,7 @@
 *.vs
 */x64/
 */debug
-*.vcxproj
-*.filters
-*.user
-*.sln
+
 
 
 # Prerequisites
