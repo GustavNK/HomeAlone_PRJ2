@@ -37,6 +37,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Serial.cpp">
+    <ClCompile Include="Time_class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,6 +58,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Serial.h">
+    <ClInclude Include="Time_class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
