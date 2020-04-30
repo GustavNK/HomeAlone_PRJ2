@@ -22,6 +22,16 @@ void TimeInterval::setEndTime(int hr, int min)
 	_endTime.setMin(min);
 }
 
+Time_class TimeInterval::getStartTime() const
+{
+	return _startTime;
+}
+
+Time_class TimeInterval::getEndTime() const
+{
+	return _endTime;
+}
+
 void TimeInterval::print() const
 {
 	cout << "Starttime: ";
