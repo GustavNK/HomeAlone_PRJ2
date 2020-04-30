@@ -4,6 +4,7 @@
 
 #include <Windows.h>
 #include <memory.h>
+#include <cstring>
 
 #define FC_DTRDSR       0x01
 #define FC_RTSCTS       0x02

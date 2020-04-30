@@ -1,13 +1,12 @@
 // Serial.cpp
 
-#include "stdafx.h"
 #include "Serial.h"
 
 
 CSerial::CSerial()
 {
 
-	memset( &m_OverlappedRead, 0, sizeof( OVERLAPPED ) );
+	memset( &m_OverlappedRead, 0, sizeof( OVERLAPPED ) ); //Sets the the m_OverlappedRead "0"
  	memset( &m_OverlappedWrite, 0, sizeof( OVERLAPPED ) );
 	m_hIDComDev = NULL;
 	m_bOpened = false;

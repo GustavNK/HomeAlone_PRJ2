@@ -141,6 +141,7 @@
     <ClCompile Include="DE2_Driver.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="PC_Control.cpp" />
+    <ClCompile Include="Serial.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Source1.cpp" />
     <ClCompile Include="TimeInterval.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="DE2_Driver.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="PC_Control.h" />
+    <ClInclude Include="Serial.h" />
     <ClInclude Include="TimeInterval.h" />
     <ClInclude Include="User_Interface.h" />
   </ItemGroup>
