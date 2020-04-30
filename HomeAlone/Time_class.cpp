@@ -21,17 +21,17 @@ Time_class::Time_class(int hr, int min, int sec)
 //Setter
 void Time_class::setHour(int hr)
 {
-	_hr = ((0 < hr < 24) ? _hr : 0);
+	_hr = ((0 < hr) && ( hr < 24) ? hr : 0);
 }
 
 void Time_class::setMin(int min)
 {
-	_min = ((0 < min < 60) ? _min : 0);
+	_min = ((0 < min) && (min < 60) ? min : 0);
 }
 
 void Time_class::setSec(int sec)
 {
-	_sec = ((0 < sec < 60) ? _sec : 0);
+	_sec = ((0 < sec) && (sec < 60) ? sec : 0);
 }
 
 //Getter
