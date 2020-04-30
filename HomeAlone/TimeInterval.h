@@ -1,22 +1,37 @@
+/*
+Created by:
+	ART
+Date started:
+	29/04/2020
+Date finised:
+	-- -- --
+Project:
+	2. Semester : HomeAlone A/S
+*/
 #pragma once
-#include <ctime>
+#include "Time_class.h"
 
 class TimeInterval {
 
 
 public:
-	TimeInterval();
-	TimeInterval(time_t start, time_t end);
+	//Constructor/Destructor
+	TimeInterval(int h1 = 0, int m1 = 0, int h2 = 0 , int m2 = 0);
 	~TimeInterval();
-	void setStartTime();
-	void setEndTime();
+	
+	//Setter
+	void setStartTime(int, int);
+	void setEndTime(int, int);
 
+	//Getter
+	void getTimeInterval(char* start, char* end);
+
+	//others
+	void print() const;
 
 private: 
-	time_t startTime;
-	time_t endTime;
-	// 
-
+	Time_class _startTime;
+	Time_class _endTime;
 
 };
 
