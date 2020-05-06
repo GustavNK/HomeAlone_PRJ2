@@ -12,9 +12,8 @@ namespace LogClassTester
 		
 		TEST_METHOD(TestMethod1)
 		{
-			Log logList(); //Constructor
-			logList().archiveNewActivity("1");
-			logList().print();
+			Log logList;
+			logList.archiveNewActivity("1");
 		}
 	};
 }

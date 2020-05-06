@@ -9,7 +9,9 @@ class Log
 {
 public:
 	Log();
-	void archiveNewActivity(string reason);
+	void archiveNewActivity(string reason); //set
+	//get activity
+	//get size
 	void print() const;
 private:
 	list<Activity> logList_;
