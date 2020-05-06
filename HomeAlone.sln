@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DE2_test", "DE2_test\DE2_te
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timeinterval_Time_class_Test", "Time_class_Test\Time_class_Test.vcxproj", "{755567CA-852B-405D-AC88-582D1D4DE6DD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI_test", "GUI_test\GUI_test.vcxproj", "{3218D43D-4E0D-4E94-8F00-375307FD7DFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{755567CA-852B-405D-AC88-582D1D4DE6DD}.Release|x64.Build.0 = Release|x64
 		{755567CA-852B-405D-AC88-582D1D4DE6DD}.Release|x86.ActiveCfg = Release|Win32
 		{755567CA-852B-405D-AC88-582D1D4DE6DD}.Release|x86.Build.0 = Release|Win32
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Debug|x64.ActiveCfg = Debug|x64
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Debug|x64.Build.0 = Debug|x64
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Debug|x86.ActiveCfg = Debug|Win32
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Debug|x86.Build.0 = Debug|Win32
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Release|x64.ActiveCfg = Release|x64
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Release|x64.Build.0 = Release|x64
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Release|x86.ActiveCfg = Release|Win32
+		{3218D43D-4E0D-4E94-8F00-375307FD7DFF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

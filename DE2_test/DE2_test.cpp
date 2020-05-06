@@ -19,8 +19,8 @@ namespace DE2test
 		TEST_METHOD(Receive)
 		{
 			DE2_driver de2 = DE2_driver(3, 9600);
-			bool temp = de2.readDe2Signal();
-			Assert::AreEqual(true, temp);
+			char temp = de2.readDe2Char();
+			Assert::AreEqual('0', temp);
 		}
 	};
 }

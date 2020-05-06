@@ -17,13 +17,13 @@ char DE2_driver::readDe2Char() const
 	if (!s->Open(comPort_, baudRate_))
 	{
 		std::cout << ("Could not open COM") << comPort_ << std::endl;
-		return '0';
+		return falseChar_;
 	}
 
 	return s->ReadData(data, 1);
 }
 
-bool DE2_driver::sendDe2Char(char *data) const
+char DE2_driver::sendDe2Char(char *data) const
 {
 
 	CSerial* s = new CSerial();
@@ -36,5 +36,5 @@ bool DE2_driver::sendDe2Char(char *data) const
 
 	s->SendData(data, 1);
 
-	return true;
+	return trueChar_;
 }
