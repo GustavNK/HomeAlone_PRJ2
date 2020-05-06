@@ -6,17 +6,35 @@ GUIout::GUIout()
 
 void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRight, list<string>& choice)
 {
-	int length = 2;
-	cout << lt;
-	for (size_t i = 0; i < length; i++)
+	size_t lengthOfText;
+
+	lengthOfText = header.length();
+	//lengthOfText = determineLongestString(main) > lengthOfText ? determineLongestString(main) : lengthOfText;
+	lengthOfText = determineLongestString(choice) > lengthOfText ? determineLongestString(choice) : lengthOfText;
+
+	size_t lengthOfBox = lengthOfText + 2;
+
+	seperator(lt, hPipe, rt, lengthOfBox);
+
+	drawHeader(header, lengthOfBox);
+
+	seperator(rT, hPipe, lT, lengthOfBox);
+
+	//TODO Implement new main, that can be seperatet into 2 columns
+	//":" sepertor must alwauys be equal length away 
+
+	seperator(rT, hPipe, lT, lengthOfBox);
+
+	for (std::list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
-		cout << vPipe;
+		drawText(*i, lengthOfText);
 	}
-	cout << rt;
+	seperator(lb, hPipe, rb, lengthOfBox);
 }
 
 void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 {
+	system("CLS");
 	size_t lengthOfText;
 
 	lengthOfText = header.length();
@@ -25,63 +43,36 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 
 	size_t lengthOfBox = lengthOfText + 2;
 
-	cout << lt;
-	for (size_t i = 0; i < lengthOfBox; i++)
-	{
-		cout << vPipe;
-	}
-	cout << rt << endl;
+	seperator(lt, hPipe, rt, lengthOfBox);
 
-	drawHeader("as", lengthOfBox);
+	drawHeader(header, lengthOfBox);
+
+	seperator(rT, hPipe, lT, lengthOfBox);
 
 	for (std::list<string>::iterator i = main.begin(); i != main.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
 
-	cout << lb;
-	for (size_t i = 0; i < lengthOfBox; i++)
-	{
-		cout << vPipe;
-	}
-	cout << rb << endl;
-}
+	seperator(rT, hPipe, lT, lengthOfBox);
 
-void GUIout::draw(list<string>& test)
-{
-	size_t lengthOfText = determineLongestString(test);
-	size_t lengthOfBox = lengthOfText + 2;
-	cout << lt;
-	for (size_t i = 0; i < lengthOfBox; i++)
-	{
-		cout << vPipe;
-	}
-	cout << rt << endl;
-
-	drawHeader("as", lengthOfBox);
-
-	for (std::list<string>::iterator i = test.begin(); i != test.end(); i++)
+	for (std::list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
-
 	seperator(lb, hPipe, rb, lengthOfBox);
-	/*cout << lb;
-	for (size_t i = 0; i < lengthOfBox; i++)
-	{
-		cout << vPipe;
-	}
-	cout << rb << endl;*/
 }
+
 
 void GUIout::drawText(string text, size_t lengthOfText)
 {
-	cout << hPipe << " " << text;
+	cout << vPipe << " " 
+		<< text;
 	for (size_t i = 0; i <=  lengthOfText - text.length(); i++)
 	{
 		cout << " ";
 	}
-	cout << "" << hPipe << endl;
+	cout << vPipe << endl;
 
 }
 
@@ -89,7 +80,7 @@ void GUIout::drawHeader(string header, size_t lengthOfBox)
 {
 	int blankSpace = floor((lengthOfBox - header.length()) / 2);
 
-	cout << hPipe;
+	cout << vPipe;
 	for (size_t i = 0; i < blankSpace; i++)
 	{
 		cout << " ";
@@ -100,7 +91,7 @@ void GUIout::drawHeader(string header, size_t lengthOfBox)
 	{
 		cout << " ";
 	}
-	cout << hPipe << endl;
+	cout << vPipe << endl;
 }
 
 void GUIout::seperator(char l, char m, char r, size_t len)

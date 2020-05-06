@@ -3,6 +3,7 @@
 #include <iostream>
 #include <list>
 #include <math.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -12,7 +13,6 @@ public:
 	GUIout();
 	void draw(string &header, list<string> &mainLeft, list<string>& mainRight, list<string> &choice);
 	void draw(string &header, list<string> &main, list<string> &choice);
-	void draw(list<string> &test);
 private:
 	size_t determineLongestString(list<string>& list);
 	void drawText(string, size_t length);

@@ -5,22 +5,22 @@
 
 int main() {
 	GUIout g = GUIout();
+	std::cout << "njgisndgjis<";
 
-	string header = "MAIN";
+	string header = "MAIN Menu22";
 
 	list<string> main;
-	main.push_back("as");
-	main.push_back("as");
-	main.push_back("as");
-	main.push_back("as");
-	main.push_back("as22sdfdgfdgsfdgsfdgsdf22");
+	main.push_back("Log 2: xx.xx - xx:xx:xx");
+	main.push_back("-Eh?");
+	main.push_back("Log 3: xx.xx - xx:xx:xx");
+	main.push_back("-yes");
 
 	list<string> choice;
-	choice.push_back("1) hgellofs2");
-	choice.push_back("2) hgellofs3");
-	choice.push_back("3) hgellofs4");
-	choice.push_back("4) hgellofs5");
-	choice.push_back("4) hgellofs22sdf2");
+	choice.push_back("1) Valg");
+	choice.push_back("2) Et andet valg");
+	choice.push_back("3) Enndnu et valg");
+	choice.push_back("4) Der er flere");
+	choice.push_back("5) Sidste valg");
 
 
 
