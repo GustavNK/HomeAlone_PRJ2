@@ -24,7 +24,8 @@ public:
 	void setEndTime(int, int);
 
 	//Getter
-	void getTimeInterval(char* start, char* end);
+	Time_class getStartTime() const;
+	Time_class getEndTime() const;
 
 	//others
 	void print() const;
