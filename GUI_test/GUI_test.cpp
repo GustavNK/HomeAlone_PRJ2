@@ -5,15 +5,20 @@
 
 int main() {
 	GUIout g = GUIout();
-	std::cout << "njgisndgjis<";
 
-	string header = "MAIN Menu22";
+	string header = "MAIN Med2";
 
 	list<string> main;
-	main.push_back("Log 2: xx.xx - xx:xx:xx");
-	main.push_back("-Eh?");
-	main.push_back("Log 3: xx.xx - xx:xx:xx");
-	main.push_back("-yes");
+	main.push_back("Den her");
+	main.push_back("En mere");
+	main.push_back("Noget tekst");
+	main.push_back("Mere tekst");
+
+	list<string> mainR;
+	main.push_back("Jaja");
+	main.push_back("Tekst");
+	main.push_back("Nej nej");
+	main.push_back("en teks");
 
 	list<string> choice;
 	choice.push_back("1) Valg");
@@ -24,5 +29,5 @@ int main() {
 
 
 
-	g.draw(header, main, choice);
+	g.draw(header, main, main, choice);
 }

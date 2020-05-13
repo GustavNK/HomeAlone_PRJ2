@@ -1,17 +1,39 @@
-﻿#include "GUIout.h"
+﻿//======================================================================== 
+// FILENAME  : GUIout.cpp
+// CREATED   : 06/05/20
+// AUTHOR   : Gustav 
+// DESCR.   : Handles the output to the user
+//  
+//------------------------------------------------------------------------ 
+// 
+// REV. DATE/AUTHOR CHANGE DESCRIPTION 
+// 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
+//========================================================================
+
+
+
+#include "GUIout.h"
 
 GUIout::GUIout()
 {
 }
-
+//============================================================= 
+// METHOD : draw 
+// DESCR. : Takes the header, main body and choices, 
+//          and outputs the on the screen
+//============================================================= 
 void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRight, list<string>& choice)
 {
 	size_t lengthOfText;
 
-	lengthOfText = header.length();
-	//lengthOfText = determineLongestString(main) > lengthOfText ? determineLongestString(main) : lengthOfText;
-	lengthOfText = determineLongestString(choice) > lengthOfText ? determineLongestString(choice) : lengthOfText;
+	//determine lengths of the main body
+	size_t mainLeftLen = determineLongestString(mainLeft);
+	size_t mainRightLen = determineLongestString(mainRight);
+	size_t mainLen = mainLeftLen + mainRightLen + 3;
 
+	lengthOfText = header.length();
+	lengthOfText =  mainLen > lengthOfText ?  mainLen : lengthOfText;
+	lengthOfText = determineLongestString(choice) > lengthOfText ? determineLongestString(choice) : lengthOfText;
 	size_t lengthOfBox = lengthOfText + 2;
 
 	seperator(lt, hPipe, rt, lengthOfBox);
@@ -20,8 +42,18 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 
 	seperator(rT, hPipe, lT, lengthOfBox);
 
-	//TODO Implement new main, that can be seperatet into 2 columns
-	//":" sepertor must alwauys be equal length away 
+	//Draw main in right and left
+	std::list<string>::iterator j = mainRight.begin();
+	for (std::list<string>::iterator i = mainLeft.begin(); i != mainLeft.end(); i++)
+	{
+		string text = *j;
+		text.append(mainRightLen - (*j).length(), ' ');
+		text += " : ";
+		text += *i;
+		text.append(mainLeftLen - (*i).length(), ' ');
+		drawText(text, lengthOfText);
+		j++;
+	}
 
 	seperator(rT, hPipe, lT, lengthOfBox);
 
@@ -73,19 +105,18 @@ void GUIout::drawText(string text, size_t lengthOfText)
 		cout << " ";
 	}
 	cout << vPipe << endl;
-
 }
 
 void GUIout::drawHeader(string header, size_t lengthOfBox)
 {
-	int blankSpace = floor((lengthOfBox - header.length()) / 2);
+	int blankSpace = (lengthOfBox - header.length()) / 2;
 
 	cout << vPipe;
 	for (size_t i = 0; i < blankSpace; i++)
 	{
 		cout << " ";
 	}
-	if (lengthOfBox % 2 != 0) cout << " ";
+	if ((lengthOfBox - header.length()) % 2 != 0) cout << " ";
 	cout << header;
 	for (size_t i = 0; i < blankSpace; i++)
 	{
