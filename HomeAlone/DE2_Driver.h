@@ -13,5 +13,5 @@ private:
 	char trueChar_;
 	char falseChar_; //Char send from DE2 when reporting false or true
 	int comPort_; //COM port for the DE2 board
-	int baudRate_; //Baudrate between DE2 and PC
+	int baudRate_; //Baudrate between DE2 and PCe
 };
