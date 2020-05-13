@@ -62,6 +62,8 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 		drawText(*i, lengthOfText);
 	}
 	seperator(lb, hPipe, rb, lengthOfBox);
+
+	cout << endl << endl << "Indtast Kommando: ";
 }
 
 void GUIout::draw(string& header, list<string>& main, list<string>& choice)
@@ -93,6 +95,8 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 		drawText(*i, lengthOfText);
 	}
 	seperator(lb, hPipe, rb, lengthOfBox);
+
+	cout << endl << endl << "Indtast Kommando: ";
 }
 
 
