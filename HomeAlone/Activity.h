@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -8,12 +9,12 @@ class Activity
 public:
 	Activity(string reason);
 	void setDateTime();
-	string getDateTime();
+	time_t getDateTime() const;
 	void setReason(string reason);
-	string getReason();
+	string getReason() const;
 	void print() const;
 private:
 	string reason_;
-	string date_time_;
+	time_t date_time_;
 };
 
