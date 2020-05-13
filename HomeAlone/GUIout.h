@@ -1,3 +1,15 @@
+//======================================================================== 
+// FILENAME  : GUIout.h
+// CREATED   : 06/05/20
+// AUTHOR   : Gustav 
+// DESCR.   : Handles the output to the user
+//  
+//------------------------------------------------------------------------ 
+// 
+// REV. DATE/AUTHOR CHANGE DESCRIPTION 
+// 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
+//========================================================================
+
 #pragma once
 #include <string>
 #include <iostream>
