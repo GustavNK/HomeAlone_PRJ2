@@ -10,9 +10,9 @@
 // 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
 //========================================================================
 
-
-
 #include "GUIout.h"
+
+using namespace std;
 
 GUIout::GUIout()
 {
@@ -43,7 +43,7 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 	seperator(rT, hPipe, lT, lengthOfBox);
 
 	//Draw main in right and left
-	std::list<string>::iterator j = mainRight.begin();
+	list<string>::iterator j = mainRight.begin();
 	for (std::list<string>::iterator i = mainLeft.begin(); i != mainLeft.end(); i++)
 	{
 		string text = *j;
@@ -57,13 +57,18 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 
 	seperator(rT, hPipe, lT, lengthOfBox);
 
-	for (std::list<string>::iterator i = choice.begin(); i != choice.end(); i++)
+	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
 	seperator(lb, hPipe, rb, lengthOfBox);
 }
 
+//============================================================= 
+// METHOD : draw 
+// DESCR. : Takes the header, main body and choices, 
+//          and outputs the on the screen
+//============================================================= 
 void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 {
 	system("CLS");
@@ -81,21 +86,25 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 
 	seperator(rT, hPipe, lT, lengthOfBox);
 
-	for (std::list<string>::iterator i = main.begin(); i != main.end(); i++)
+	for (list<string>::iterator i = main.begin(); i != main.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
 
 	seperator(rT, hPipe, lT, lengthOfBox);
 
-	for (std::list<string>::iterator i = choice.begin(); i != choice.end(); i++)
+	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
 	seperator(lb, hPipe, rb, lengthOfBox);
 }
 
-
+//============================================================= 
+// METHOD : drawText
+// DESCR. : Ouputs 1 line of text with pipes and spaces on the sides
+//		    with correct seperation
+//============================================================= 
 void GUIout::drawText(string text, size_t lengthOfText)
 {
 	cout << vPipe << " " 
@@ -107,6 +116,10 @@ void GUIout::drawText(string text, size_t lengthOfText)
 	cout << vPipe << endl;
 }
 
+//============================================================= 
+// METHOD : drawHeader
+// DESCR. : Outputs the header with proper spacing af pipes
+//============================================================= 
 void GUIout::drawHeader(string header, size_t lengthOfBox)
 {
 	int blankSpace = (lengthOfBox - header.length()) / 2;
@@ -125,6 +138,10 @@ void GUIout::drawHeader(string header, size_t lengthOfBox)
 	cout << vPipe << endl;
 }
 
+//============================================================= 
+// METHOD : seperator 
+// DESCR. : Ouptut 
+//============================================================= 
 void GUIout::seperator(char l, char m, char r, size_t len)
 {
 	cout << l;
@@ -135,11 +152,16 @@ void GUIout::seperator(char l, char m, char r, size_t len)
 	cout << r << endl;
 }
 
+//============================================================= 
+// METHOD : draw 
+// DESCR. : Takes the header, main body and choices, 
+//          and outputs the on the screen
+//============================================================= 
 size_t GUIout::determineLongestString(list<string>& list)
 {
 	size_t longest = 0;
 
-	for (std::list<string>::iterator i = list.begin(); i != list.end(); i++)
+	for (list<string>::iterator i = list.begin(); i != list.end(); i++)
 	{
 		longest = (i->length() > longest) ? i->length() : longest;
 	}
