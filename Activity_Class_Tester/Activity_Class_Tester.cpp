@@ -15,6 +15,7 @@ namespace ActivityClassTester
 			string reason = "Log in.";
 			Activity a1("Log in.");
 			Assert::AreEqual(reason, a1.getReason());
+			//Test date_time
 		}
 	};
 }
