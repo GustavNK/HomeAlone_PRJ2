@@ -145,6 +145,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Source1.cpp" />
     <ClCompile Include="TimeInterval.cpp" />
+    <ClCompile Include="Time_class.cpp" />
     <ClCompile Include="User_Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="PC_Control.h" />
     <ClInclude Include="TimeInterval.h" />
+    <ClInclude Include="Time_class.h" />
     <ClInclude Include="User_Interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

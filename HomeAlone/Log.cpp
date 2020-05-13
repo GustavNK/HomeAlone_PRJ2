@@ -1,3 +1,9 @@
+/*
+Created by:KA
+Date started: 29/04/2020
+Date finised:
+Project: HomeAlone A/S
+*/
 #include <iterator>
 #include "Log.h"
 
@@ -27,6 +33,24 @@ void Log::archiveNewActivity(string reason)
 
 	//New activity inserted at the back of the list
 	logList_.push_back(Activity(reason)); //new før Activity?
+}
+
+string Log::getActivity()
+{
+	//getDateTime time_t to string
+
+	//getReason
+
+	return string();
+}
+
+int Log::getSize()
+{
+	int size = logList_.size();
+
+	cout << "Number of elements in log: " << size << endl;
+
+	return size;
 }
 
 void Log::print() const

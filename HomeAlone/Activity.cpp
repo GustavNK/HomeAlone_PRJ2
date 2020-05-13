@@ -1,3 +1,9 @@
+/*
+Created by:KA
+Date started: 29/04/2020
+Date finised:
+Project: HomeAlone A/S
+*/
 #include <ctime>
 #include "Activity.h"
 

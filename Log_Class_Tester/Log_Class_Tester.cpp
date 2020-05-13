@@ -15,5 +15,7 @@ namespace LogClassTester
 			Log logList;
 			logList.archiveNewActivity("1");
 		}
+
+
 	};
 }
