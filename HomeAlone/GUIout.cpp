@@ -14,6 +14,7 @@
 
 #include "GUIout.h"
 
+//Empty constructor
 GUIout::GUIout()
 {
 }
@@ -129,6 +130,10 @@ void GUIout::drawHeader(string header, size_t lengthOfBox)
 	cout << vPipe << endl;
 }
 
+//============================================================= 
+// METHOD : seperator 
+// DESCR. : Ouptut the seperator between lines 
+//============================================================= 
 void GUIout::seperator(char l, char m, char r, size_t len)
 {
 	cout << l;
@@ -139,6 +144,11 @@ void GUIout::seperator(char l, char m, char r, size_t len)
 	cout << r << endl;
 }
 
+//============================================================= 
+// METHOD : :determineLongestString 
+// DESCR. : Takes a list of strings, and determines, which string is
+//     the longest, and returns the length of the longest string
+//============================================================= 
 size_t GUIout::determineLongestString(list<string>& list)
 {
 	size_t longest = 0;
