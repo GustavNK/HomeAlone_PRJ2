@@ -1,3 +1,15 @@
+//======================================================================== 
+// FILENAME : DE2_Driver.h
+// CREATED  : 06/05/20
+// AUTHOR	: GustavNK
+// DESCR.   : Handles the UART output to the DE2 Board
+//------------------------------------------------------------------------ 
+//
+// REV. DATE/AUTHOR CHANGE DESCRIPTION 
+// 1.0 <13.05.20> Initial creation and inplemnetet into master
+// 1.1 <14.05.20> Made into a child of CSerial and better comments
+//========================================================================
+
 #pragma once
 
 #include "Serial.h"
@@ -6,7 +18,6 @@
 //Char send from DE2 when reporting false or true
 #define trueChar  'z';
 #define falseChar '0';
-
 
 class DE2_driver : public CSerial
 {

@@ -167,7 +167,7 @@ size_t GUIout::determineLongestString(list<string>& list)
 {
 	size_t longest = 0;
 
-	for (list<string>::iterator i = list.begin(); i != list.end(); i++)
+	for (std::list<string>::iterator i = list.begin(); i != list.end(); i++)
 	{
 		longest = (i->length() > longest) ? i->length() : longest;
 	}

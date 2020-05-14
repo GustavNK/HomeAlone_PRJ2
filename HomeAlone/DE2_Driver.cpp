@@ -1,3 +1,16 @@
+//======================================================================== 
+// FILENAME : DE2_Driver.cpp
+// CREATED  : 06/05/20
+// AUTHOR	: GustavNK
+// DESCR.   : Handles the UART output to the DE2 Board
+//  
+//------------------------------------------------------------------------ 
+// 
+// REV. DATE/AUTHOR CHANGE DESCRIPTION 
+// 1.0 <13.05.20> Initial creation and inplemnetet into master
+// 1.1 <14.05.20> Made into a child of CSerial and better comments
+//========================================================================
+
 #include "DE2_Driver.h"
 
 //============================================================= 
@@ -32,7 +45,7 @@ char DE2_driver::readDe2Char()
 
 //============================================================= 
 // METHOD : readDe2Char --DUMMY--
-// DESCR. : Always returns the expected char
+// DESCR. : Always returns the expected char. Made for testing
 //============================================================= 
 char DE2_driver::readDe2Char(int i)
 {
@@ -45,9 +58,6 @@ char DE2_driver::readDe2Char(int i)
 //============================================================= 
 bool DE2_driver::sendDe2Char(const char data)
 {
-
-	CSerial* s = new CSerial();
-
 	if (!Open(comPort_, baudRate_))
 	{
 		std::cout << ("Could not open COM") << comPort_ << std::endl;
@@ -61,7 +71,7 @@ bool DE2_driver::sendDe2Char(const char data)
 
 //============================================================= 
 // METHOD : sendDe2Char --DUMMY--
-// DESCR. : Always returns true
+// DESCR. : Always returns true. Made for testing
 //============================================================= 
 bool DE2_driver::sendDe2Char(char data, int i) 
 {

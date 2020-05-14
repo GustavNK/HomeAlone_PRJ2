@@ -1,6 +1,7 @@
 ﻿#include "../HomeAlone/GUIout.h"
 #include <iostream>
 #include <list>
+#include "../HomeAlone/X10_driver.h"
 
 
 int main() {
@@ -26,8 +27,6 @@ int main() {
 	choice.push_back("3) Enndnu et valg");
 	choice.push_back("4) Der er flere");
 	choice.push_back("5) Sidste valg");
-
-
 
 	g.draw(header, main, main, choice);
 }
