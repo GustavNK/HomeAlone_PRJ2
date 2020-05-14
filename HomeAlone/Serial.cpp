@@ -164,4 +164,3 @@ int CSerial::ReadData( void *buffer, int limit )
 	return( (int) dwBytesRead );
 
 }
-

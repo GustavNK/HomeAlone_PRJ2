@@ -1,17 +1,22 @@
 #pragma once
 
-#include "C:/Users/Gustav/Documents/GitHub/PRJ2/HomeAlone/HomeAlone/Serial.h"
+#include "Serial.h"
 #include <iostream>
 
-class DE2_driver 
+//Char send from DE2 when reporting false or true
+#define trueChar  'z';
+#define falseChar '0';
+
+
+class DE2_driver : public CSerial
 {
 public:
-	DE2_driver(int comPort, int baudRate);
-	char readDe2Char() const;
-	char sendDe2Char(char *data) const;
+	DE2_driver(int comPort, int baudRate = 9600); //comPort is the USB port used by the UART driver
+	char readDe2Char();
+	char readDe2Char(int i); //Dummy function
+	bool sendDe2Char(const char data) ;
+	bool sendDe2Char(char data, int i); //Dummy function
 private:
-	char trueChar_;
-	char falseChar_; //Char send from DE2 when reporting false or true
 	int comPort_; //COM port for the DE2 board
 	int baudRate_; //Baudrate between DE2 and PC
 };
