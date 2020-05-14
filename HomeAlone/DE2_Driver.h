@@ -18,5 +18,5 @@ public:
 	bool sendDe2Char(char data, int i); //Dummy function
 private:
 	int comPort_; //COM port for the DE2 board
-	int baudRate_; //Baudrate between DE2 and PC
+	int baudRate_; //Baudrate between DE2 and PCe
 };
