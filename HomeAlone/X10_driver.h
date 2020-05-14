@@ -18,6 +18,7 @@
 using namespace std;
 
 //Enumeration of the possible functions in X10 protocol
+//
 enum class function {
 	All_Units_Off,
 	All_Units_On,
@@ -40,7 +41,8 @@ class X10_driver : public CSerial
 {
 public:
 	X10_driver(int comPort_, int baudRate_ = 9600);
-	bool sendMessage(char house, int unit, function func);
+	bool sendMessage(char house, int unit, function func); //func can be int or enum class function (Ex: 2 or function::On)
+	bool sendMessage(char house, int unit, function func, int i); //Dummy function
 
 private:
 	int comPort_;

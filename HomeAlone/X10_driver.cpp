@@ -23,8 +23,9 @@ X10_driver::X10_driver(int comPort, int baudRate) : CSerial()
 }
 
 //============================================================= 
-// METHOD : sendDe2Char --DUMMY--
-// DESCR. : Always returns true. Made for testing
+// METHOD : sendMessage --DUMMY--
+// DESCR. : Sends 3 char to Transmitter, that determine codes
+//			To be send over X10
 //============================================================= 
 bool X10_driver::sendMessage(char house, int unit, function func)
 {
@@ -47,27 +48,27 @@ bool X10_driver::sendMessage(char house, int unit, function func)
 		case 'N': message[0] = 0b10010101;
 		case 'O': message[0] = 0b01100101;
 		case 'P': message[0] = 0b10100101;
-		default : message[0] = 0b01101001; // Default to case 'A'
+		default: message[0] = 0b01101001; // Default to case 'A'
 	}
 
 	switch (unit) {
-		case 1 : message[1] = 0b01101001;
-		case 2 : message[1] = 0b10101001;
-		case 3 : message[1] = 0b01011001;
-		case 4 : message[1] = 0b10011001;
-		case 5 : message[1] = 0b01010110;
-		case 6 : message[1] = 0b10010110;
-		case 7 : message[1] = 0b01100110;
-		case 8 : message[1] = 0b10100110;
-		case 9 : message[1] = 0b01101010;
-		case 10 : message[1] = 0b10101010;
-		case 11 : message[1] = 0b01011010;
-		case 12 : message[1] = 0b10011010;
-		case 13 : message[1] = 0b01010101;
-		case 14 : message[1] = 0b10010101;
-		case 15 : message[1] = 0b01100101;
-		case 16 : message[1] = 0b10100101;
-		default : message[1] = 0b01101001; //default to case 1
+		case 1: message[1] = 0b01101001;
+		case 2: message[1] = 0b10101001;
+		case 3: message[1] = 0b01011001;
+		case 4: message[1] = 0b10011001;
+		case 5: message[1] = 0b01010110;
+		case 6: message[1] = 0b10010110;
+		case 7: message[1] = 0b01100110;
+		case 8: message[1] = 0b10100110;
+		case 9: message[1] = 0b01101010;
+		case 10: message[1] = 0b10101010;
+		case 11: message[1] = 0b01011010;
+		case 12: message[1] = 0b10011010;
+		case 13: message[1] = 0b01010101;
+		case 14: message[1] = 0b10010101;
+		case 15: message[1] = 0b01100101;
+		case 16: message[1] = 0b10100101;
+		default: message[1] = 0b01101001; //default to case 1
 	}
 
 	switch (func) {
@@ -90,13 +91,22 @@ bool X10_driver::sendMessage(char house, int unit, function func)
 	}
 	
 	//Sending the created message
-	if (!Open(comPort_, this->baudRate_))
+	if (!Open(comPort_, baudRate_))
 	{
-		std::cout << ("Could not open COM") << this->comPort_ << std::endl;
+		std::cout << ("Could not open COM") << comPort_ << std::endl;
 		return false;
 	}
 
 	SendData(message, 3);
 
+	return true;
+}
+
+//============================================================= 
+// METHOD : sendMessage --DUMMY--
+// DESCR. : Always returns true. Made for testing
+//============================================================= 
+bool X10_driver::sendMessage(char house, int unit, function func, int i)
+{
 	return true;
 }
