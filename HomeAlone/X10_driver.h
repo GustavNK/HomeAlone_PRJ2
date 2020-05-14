@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------ 
 // 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
-// 1.0 <14.05.20><GustavNK> Initial creation
+// 1.0 <14.05.20><GustavNK> Initial creation and writng of class
 //========================================================================
 
 #pragma once
