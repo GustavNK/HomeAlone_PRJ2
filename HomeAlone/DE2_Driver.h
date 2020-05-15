@@ -1,6 +1,7 @@
 #pragma once
 
-#include "C:/Users/Gustav/Documents/GitHub/PRJ2/HomeAlone/HomeAlone/Serial.h"
+//#include "C:/Users/Gustav/Documents/GitHub/PRJ2/HomeAlone/HomeAlone/Serial.h"
+#include "Serial.h"
 #include <iostream>
 
 class DE2_driver 
