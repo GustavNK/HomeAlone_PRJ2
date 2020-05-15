@@ -7,8 +7,9 @@
 //------------------------------------------------------------------------ 
 // 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
-// 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
-// 1.1 <12.05.20> Addede additional comments and refined the drwa() function
+// 1.0 <13.05.20><GustavNK> The class seems to work, but needs a lot of comments and refining
+// 1.1 <12.05.20><GustavNK> Addede additional comments and refined the draw() function
+// 1.2 <15.05.20><GustavNK>	Names of defined pipes interfered with other lib. Renamed
 //========================================================================
 
 #pragma once
@@ -19,14 +20,14 @@
 #include <stdlib.h>
 
 //Define a shortcut for the pipes-ASCII used
-#define rt '\xBB'
-#define lt '\xC9'
-#define rb '\xBC'
-#define lb '\xC8'
+#define rtPipe '\xBB'
+#define ltPipe '\xC9'
+#define rbPipe '\xBC'
+#define lbPipe '\xC8'
 #define hPipe '\xCD'
 #define vPipe '\xBA'
-#define lT '\xB9'
-#define rT '\xCC'
+#define lTPipe '\xB9'
+#define rTPipe '\xCC'
 
 using namespace std;
 

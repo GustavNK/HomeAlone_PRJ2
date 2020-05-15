@@ -8,29 +8,61 @@
 // 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
 // 1.0 <14.05.20><GustavNK> Initial creation
+// 2.0 <15.05.20><GustavNK> Remade into a child of UART
+//							Split sendMessage() with a sepearte manchester translator
+//------------------------------------------------------------------------ 
+// TODO
+//
 //========================================================================
 
 #include "X10_driver.h"
 
 //============================================================= 
 // METHOD : X10_driver
-// DESCR. : Constructor
+// DESCR. : Constructor. Only initiates the UART
 //============================================================= 
-X10_driver::X10_driver(int comPort, int baudRate) : CSerial()
+X10_driver::X10_driver(int comPort, int baudRate) : UART(comPort, baudRate)
 {
-	comPort_ = comPort;
-	baudRate_ = baudRate;
 }
 
 //============================================================= 
 // METHOD : sendMessage --DUMMY--
-// DESCR. : Sends 3 char to Transmitter, that determine codes
-//			To be send over X10
+// DESCR. : Sends 3 char to Transmitter
 //============================================================= 
 bool X10_driver::sendMessage(char house, int unit, function func)
 {
 	char message[3]; //Creates array which is to be send to Transmitter
 
+	manchesterMessage(house, unit, func, message);
+
+	//Sending the created message
+	if (!Open(getComPort(), getBaudRate()))
+	{
+		std::cout << ("Could not open COM") << getComPort() << std::endl;
+		return false;
+	}
+
+	SendData(message, 3);
+
+	return true;
+}
+
+//============================================================= 
+// METHOD : sendMessage --DUMMY--
+// DESCR. : Always returns true. Made for testing
+//============================================================= 
+bool X10_driver::sendMessage(char house, int unit, function func, int i)
+{
+	return true;
+}
+
+//============================================================= 
+// METHOD : manchesterMessage
+// DESCR. : Takes house, unit and func, and makes them into readable
+//			message for the X10 transmitter
+//============================================================= 
+void X10_driver::manchesterMessage(char house, int unit, function func, char* message)
+{
 	switch (house) {
 		case 'A': message[0] = 0b01101001;
 		case 'B': message[0] = 0b10101001;
@@ -89,24 +121,4 @@ bool X10_driver::sendMessage(char house, int unit, function func)
 		case function::Status_Request: message[2] = 0b10101010;
 		default: message[2] = 0b01010101; //default to case 1 
 	}
-	
-	//Sending the created message
-	if (!Open(comPort_, baudRate_))
-	{
-		std::cout << ("Could not open COM") << comPort_ << std::endl;
-		return false;
-	}
-
-	SendData(message, 3);
-
-	return true;
-}
-
-//============================================================= 
-// METHOD : sendMessage --DUMMY--
-// DESCR. : Always returns true. Made for testing
-//============================================================= 
-bool X10_driver::sendMessage(char house, int unit, function func, int i)
-{
-	return true;
 }

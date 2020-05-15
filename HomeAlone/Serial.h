@@ -21,7 +21,7 @@ class CSerial
 
 public:
 	CSerial();
-	~CSerial();
+	~CSerial(); 
 
 	BOOL Open( int nPort = 2, int nBaud = 9600 );
 	BOOL Close( void );

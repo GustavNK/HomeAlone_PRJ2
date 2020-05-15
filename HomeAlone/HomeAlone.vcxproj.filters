@@ -34,6 +34,9 @@
     <ClCompile Include="X10_driver.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="UART.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DE2_Driver.h">
@@ -61,6 +64,9 @@
       <Filter>Header filer</Filter>
     </ClInclude>
     <ClInclude Include="X10_driver.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="UART.h">
       <Filter>Header filer</Filter>
     </ClInclude>
   </ItemGroup>

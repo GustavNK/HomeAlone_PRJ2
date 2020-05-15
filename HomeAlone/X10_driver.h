@@ -8,17 +8,21 @@
 // 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
 // 1.0 <14.05.20><GustavNK> Initial creation and writng of class
+// 2.0 <15.05.20><GustavNK> Remade into a child of UART
+//							Split sendMessage() with a sepearte manchester translator
+//------------------------------------------------------------------------ 
+// TODO
+//
 //========================================================================
 
 #pragma once
-#include "Serial.h"
+#include "UART.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
 //Enumeration of the possible functions in X10 protocol
-//
 enum class function {
 	All_Units_Off,
 	All_Units_On,
@@ -37,14 +41,12 @@ enum class function {
 	Status_Request
 };
 
-class X10_driver : public CSerial
+class X10_driver : public UART
 {
 public:
-	X10_driver(int comPort_, int baudRate_ = 9600);
+	X10_driver(int comPort_ = 2, int baudRate_ = 9600);
 	bool sendMessage(char house, int unit, function func); //func can be int or enum class function (Ex: 2 or function::On)
 	bool sendMessage(char house, int unit, function func, int i); //Dummy function
-
 private:
-	int comPort_;
-	int baudRate_;
+	void manchesterMessage(char house, int unit, function func, char* message);
 };

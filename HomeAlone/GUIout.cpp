@@ -8,6 +8,8 @@
 // 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
 // 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
+// 1.1 <12.05.20><GustavNK> Addede additional comments and refined the draw() function
+// 1.2 <15.05.20><GustavNK>	Names of defined pipes interfered with other lib. Renamed
 //========================================================================
 
 #include "GUIout.h"
@@ -38,11 +40,11 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 	lengthOfText = determineLongestString(choice) > lengthOfText ? determineLongestString(choice) : lengthOfText;
 	size_t lengthOfBox = lengthOfText + 2;
 
-	seperator(lt, hPipe, rt, lengthOfBox);
+	seperator(ltPipe, hPipe, rtPipe, lengthOfBox);
 
 	drawHeader(header, lengthOfBox);
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	//Draw main in right and left
 	list<string>::iterator j = mainRight.begin();
@@ -57,13 +59,13 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 		j++;
 	}
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
-	seperator(lb, hPipe, rb, lengthOfBox);
+	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
 
 	cout << endl << endl << "Indtast Kommando: ";
 }
@@ -84,24 +86,24 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 
 	size_t lengthOfBox = lengthOfText + 2;
 
-	seperator(lt, hPipe, rt, lengthOfBox);
+	seperator(ltPipe, hPipe, rtPipe, lengthOfBox);
 
 	drawHeader(header, lengthOfBox);
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	for (list<string>::iterator i = main.begin(); i != main.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
-	seperator(lb, hPipe, rb, lengthOfBox);
+	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
 
 	cout << endl << endl << "Indtast Kommando: ";
 }
