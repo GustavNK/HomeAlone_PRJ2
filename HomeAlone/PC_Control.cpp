@@ -5,12 +5,16 @@ Date started:
 	06/05/2020
 Date finised:
 	--/--/2020
+
+
+
 Project:
 	2. Semester : HomeAlone A/S
 */
 #include "PC_Control.h"
 #include <string.h>
 #include <list>
+#include <iterator>
 
 using namespace std;
 
@@ -149,12 +153,14 @@ void PC_Control::standardFront(list<string> &choice)
 	else {
 		right3 = "Timer inaktiv";
 	}
-	right.push_back(left1);
-	right.push_back(left2);
-	right.push_back(left3);
+	right.push_back(right1);
+	right.push_back(right2);
+	right.push_back(right3);
 
 	_output.draw(header,left,right,choice);
 }
+
+
 
 void PC_Control::Login()
 {
@@ -191,6 +197,7 @@ void PC_Control::Logout()
 
 void PC_Control::activateSystem()
 {
+
 	list<string> choices;
 	string c1 = "Confirm";
 	string c2 = "Exit";
@@ -224,9 +231,25 @@ void PC_Control::showLog()
 
 }
 
-void PC_Control::setTimerOut()
+void PC_Control::setTimer()
 {
+	//Header
+	string header = "S\x91t timer";
+	
+	//Main
+	string main = "Vælg hvilket modul du gerne vil s\x91tte timer for: ";
+
+	//Choices
+
 	list<string> choices;
+	list<Module*>::iterator it;
+	for (it = _modules.begin(); it != _modules.end(); it++) 
+	{
+		string c1 = (*it)->getInfo();
+		choices.push_back(c1);
+	}
+
+	
 	string c1 = "Log ud";
 	string c2 = "Aktiver system";
 	string c3 = "Skift kode";
@@ -239,7 +262,4 @@ void PC_Control::setTimerOut()
 	choices.push_back(c5);
 	
 	standardFront(choices);
-
-
-
 }

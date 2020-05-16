@@ -19,29 +19,29 @@ public:
 	//Update Gui
 	void updateGui();
 
-	//Set standard menu
+	//Standard menu
 	void standardFront(list<string> &choice);
 
-	//Set Login
+	//Login
 	void Login();
 
 	//Menu
 	void MainMenu();
 
-	//Set Logout
+	//Logout
 	void Logout();
 
 	//Activate system
 	void activateSystem();
 
-	//set Change code
+	//Change code
 	void changeCode();
 
 	//Show log
 	void showLog();
 
-	//Set setTimer
-	void setTimerOut();
+	//Set Timer
+	void setTimer();
 
 
 private: 
@@ -66,7 +66,7 @@ private:
 	Log _log;
 
 	//Liste af moduler
-	list<Modul> _modules; 
+	list<Module*> _modules; 
 
 	//Set Timer
 	TimeInterval _TI;

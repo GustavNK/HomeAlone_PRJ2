@@ -1,3 +1,4 @@
+
 #pragma once
 #include <string>;
 
@@ -5,17 +6,24 @@ using namespace std;
 
 class Module
 {
-public:
-	Module(string type,string x10_id);
+	//To make modules an abstract class. 
+protected:
+	Module(char house = 'X', int unit = 0);
 
+public:
 	//Getter
-	Virtuel string getType()const; 
+	char getHouse()const; 
+	int getUnit()const;
 
 	//Setter
+	void setHouse(char h);
+	void setUnit(int u); 
+
+	virtual string getInfo() const; 
 
 private: 
-	string _type;
-	string _x10_id;
+	char _house;
+	int _unit;
 
 };
 
