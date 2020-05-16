@@ -22,13 +22,25 @@
     <ClCompile Include="Source1.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Time_class.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="TimeInterval.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="User_Interface.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Activity.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Time_class.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui_In.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Lamp.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,13 +60,25 @@
     <ClInclude Include="Serial.h">
       <Filter>Header filer</Filter>
     </ClInclude>
-    <ClInclude Include="Time_class.h">
-      <Filter>Header filer</Filter>
-    </ClInclude>
     <ClInclude Include="TimeInterval.h">
       <Filter>Header filer</Filter>
     </ClInclude>
     <ClInclude Include="User_Interface.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="Activity.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="Time_class.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui_In.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="Lamp.h">
       <Filter>Header filer</Filter>
     </ClInclude>
   </ItemGroup>

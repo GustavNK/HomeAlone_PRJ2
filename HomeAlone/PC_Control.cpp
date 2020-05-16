@@ -79,7 +79,15 @@ void PC_Control::updateGui()
 
 		//Set Timer
 		case 5:
+			setTimer();
+			_input = _inputs.readInput();
 
+			switch (_input)
+			{
+			case 1: 
+				
+			
+			}
 
 
 			break;
@@ -237,29 +245,22 @@ void PC_Control::setTimer()
 	string header = "S\x91t timer";
 	
 	//Main
-	string main = "Vælg hvilket modul du gerne vil s\x91tte timer for: ";
+	list<string> mains;
+
+	string main = "V\x91lg hvilket modul du gerne vil s\x91tte timer for. V\x91r opm\x91rksom p\x86 at der kun kan s\x91ttes tidsinterval for lamper.";
+	mains.push_back(main);
 
 	//Choices
 
 	list<string> choices;
-	list<Module*>::iterator it;
-	for (it = _modules.begin(); it != _modules.end(); it++) 
+	
+	for (int i = 0 ; i < 10 ; i++) 
 	{
-		string c1 = (*it)->getInfo();
+		string c1 = "lol";
 		choices.push_back(c1);
 	}
 
-	
-	string c1 = "Log ud";
-	string c2 = "Aktiver system";
-	string c3 = "Skift kode";
-	string c4 = "Log";
-	string c5 = "Indstil timer";
-	choices.push_back(c1);
-	choices.push_back(c2);
-	choices.push_back(c3);
-	choices.push_back(c4);
-	choices.push_back(c5);
-	
-	standardFront(choices);
+	_output.draw(header,mains,choices);
+
+
 }

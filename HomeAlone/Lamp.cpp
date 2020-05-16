@@ -23,6 +23,7 @@ string Lamp::getInfo() const
 {
     string  s = "Lampe. " ;
     s.append(Module::getInfo());
+    return s; 
 }
 
 

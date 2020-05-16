@@ -8,6 +8,8 @@
 #include "Gui_In.h"
 #include "Module.h"
 
+#define MAX = 10;
+
 
 
 class PC_Control
@@ -65,11 +67,9 @@ private:
 	//Log
 	Log _log;
 
-	//Liste af moduler
-	list<Module*> _modules; 
+	//Array consisting of modules
+	//Module _modules[] { };
 
-	//Set Timer
-	TimeInterval _TI;
-	
+
 };
 
