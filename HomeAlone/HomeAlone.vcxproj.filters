@@ -1,69 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="DE2_Driver.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source1.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="User_Interface.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GUIout.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DE2_Driver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeInterval.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="PC_Control.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Serial.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source1.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Activity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Time_class.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeInterval.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="User_Interface.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="User_Interface.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="DE2_Driver.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIout.h">
+      <Filter>Header filer</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DE2_Driver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeInterval.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header filer</Filter>
     </ClInclude>
     <ClInclude Include="PC_Control.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="Serial.h">
+      <Filter>Header filer</Filter>
     </ClInclude>
     <ClInclude Include="Activity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Time_class.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header filer</Filter>
     </ClInclude>
+    <ClInclude Include="TimeInterval.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+    <ClInclude Include="User_Interface.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header filer">
+      <UniqueIdentifier>{3b06034c-34bf-4a03-b605-56f491c43fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{df3f0866-9085-4464-9efa-25064fe811d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
