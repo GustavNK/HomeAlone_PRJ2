@@ -148,7 +148,9 @@
     <ClCompile Include="Source1.cpp" />
     <ClCompile Include="TimeInterval.cpp" />
     <ClCompile Include="Time_class.cpp" />
+    <ClCompile Include="UART.cpp" />
     <ClCompile Include="User_Interface.cpp" />
+    <ClCompile Include="X10_driver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Activity.h" />
@@ -159,7 +161,9 @@
     <ClInclude Include="Serial.h" />
     <ClInclude Include="TimeInterval.h" />
     <ClInclude Include="Time_class.h" />
+    <ClInclude Include="UART.h" />
     <ClInclude Include="User_Interface.h" />
+    <ClInclude Include="X10_driver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

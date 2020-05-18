@@ -1,9 +1,12 @@
-﻿#include "../HomeAlone/GUIout.h"
+﻿#pragma once
+#include "../HomeAlone/GUIout.h"
 #include <iostream>
 #include <list>
+#include "../HomeAlone/DE2_driver.h"
 
 
 int main() {
+
 	GUIout g = GUIout();
 
 	string header = "MAIN Med2";
@@ -27,7 +30,6 @@ int main() {
 	choice.push_back("4) Der er flere");
 	choice.push_back("5) Sidste valg");
 
-
-
 	g.draw(header, main, main, choice);
+	return 0;
 }
