@@ -22,9 +22,6 @@
     <ClCompile Include="Source1.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Activity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Time_class.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -40,6 +37,7 @@
     <ClCompile Include="UART.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Activity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DE2_Driver.h">
@@ -57,9 +55,6 @@
     <ClInclude Include="Serial.h">
       <Filter>Header filer</Filter>
     </ClInclude>
-    <ClInclude Include="Activity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Time_class.h">
       <Filter>Header filer</Filter>
     </ClInclude>
@@ -75,6 +70,7 @@
     <ClInclude Include="UART.h">
       <Filter>Header filer</Filter>
     </ClInclude>
+    <ClInclude Include="Activity.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header filer">
@@ -83,5 +79,8 @@
     <Filter Include="Source">
       <UniqueIdentifier>{df3f0866-9085-4464-9efa-25064fe811d9}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

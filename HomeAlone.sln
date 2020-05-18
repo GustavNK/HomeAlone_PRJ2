@@ -7,7 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeAlone", "HomeAlone\Home
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Time_class_Test", "Time_class_Test\Time_class_Test.vcxproj", "{755567CA-852B-405D-AC88-582D1D4DE6DD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timeinterval_Time_class_Test", "Time_class_Test\Time_class_Test.vcxproj", "{755567CA-852B-405D-AC88-582D1D4DE6DD}"
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TimeInterval_Test", "TimeInterval_Test\TimeInterval_Test.vcxproj", "{9B12B8F6-CCC5-4A20-B1A6-1E7B3FCD0508}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Log_Class_Tester", "Log_Class_Tester\Log_Class_Tester.vcxproj", "{B1286779-DD64-44DC-A6A9-FF89CA5B52DC}"
