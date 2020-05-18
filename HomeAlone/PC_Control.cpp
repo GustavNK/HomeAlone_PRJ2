@@ -254,10 +254,34 @@ void PC_Control::activateSystem()
 	}
 }
 
+void PC_Control::changeCode()
+{
+	//Header
+	string header = "Skift kode på DE2-Board";
+
+	//Main
+	string s1 = "For at skifte koden skal man gøre følgende:";
+	string s2 = "1. "
+
+	//Choices
+
+
+
+}
+
 void PC_Control::showLog()
 {
-	//Afhænger af log
-	//Måske for-loop 
+	//Header
+	string header = "Vis Log";
+
+	//Main
+	list<string> mains;
+	_log.returnList(mains);
+
+	//Choices
+	list<string> choices;
+	string s1 = "G\x86 til hovedemenu.";
+	_output.draw(header, mains, choices);
 
 }
 
