@@ -46,14 +46,9 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 
 void PC_Control::updateGui() 
 {
-	string s1, s2, s3, s4;
+	string str1, str2, str3, str4;
 	
-	//Front => Login
-	Login();
-
-	//Read input
-	_input = _inputs.readInput();
-
+	
 	//Handle input
 	if (_loggedIn) {
 		MainMenu();
@@ -90,25 +85,25 @@ void PC_Control::updateGui()
 			_input = _inputs.readInput();
 
 			switch (_input){
-
 			case 1: 
-				int starthr = 0, endhr = 0, startmin = 0, endmin = 0;
-				s1 = "Enter start time (hour between 0 and 23)";
-				setTimerMain(s1);
+				int starthr{}, endhr{}, startmin{}, endmin{};
+				str1 = "Enter start time (hour between 0 and 23)";
+				setTimerMain(str1);
 				_input = starthr;
-				s2 = "Enter start time (minute value between 0 and 59)";
-				setTimerMain(s2);
+				str2 = "Enter start time (minute value between 0 and 59)";
+				setTimerMain(str2);
 				_input = startmin;
-				s3 = "Enter end time (hour between 0 and 23)";
-				setTimerMain(s3);
+				str3 = "Enter end time (hour between 0 and 23)";
+				setTimerMain(str3);
 				_input = endhr;
-				s4 = "Enter end time (minute value between 0 and 59)";
-				setTimerMain(s4);
+				str4 = "Enter end time (minute value between 0 and 59)";
+				setTimerMain(str4);
 				_input = endmin;
 				_modules[0]->setLampTimeInterval(starthr, endhr, startmin, endmin);
 
 				_log.archiveNewActivity("Timer set for lamp");
 				_TimerActive = true;
+				break;
 			default: 
 				break;
 			}
@@ -119,6 +114,12 @@ void PC_Control::updateGui()
 		}
 	}
 	else {
+		//Front => Login
+		Login();
+
+		//Read input
+		_input = _inputs.readInput();
+
 		switch (_input) {
 		//Login
 		case 1:
@@ -261,11 +262,11 @@ void PC_Control::changeCode()
 
 	//Main
 	string s1 = "For at skifte koden skal man gøre følgende:";
-	string s2 = "1. "
+	string s2 = "1. ";
 
 	//Choices
-
-
+	list<string> choices;
+	string s1 = "G\x86 til hovedemenu.";
 
 }
 
