@@ -35,12 +35,18 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 	
 	//Controls while-loop in main. Set true to exit program
 	_Shutdown = false; 
+
+	//Initiate 1 lamp to list of modules.
+	Lamp l1;
+	_modules.push_back(&l1);
 	
 }
 
 
 void PC_Control::updateGui() 
 {
+	string s1, s2, s3, s4;
+	
 	//Front => Login
 	Login();
 
@@ -77,19 +83,34 @@ void PC_Control::updateGui()
 
 			break;
 
-		//Set Timer
+		//Set Timer (Can currently only handle one lamp. Not final.)
 		case 5:
 			setTimer();
 			_input = _inputs.readInput();
 
-			switch (_input)
-			{
+			switch (_input){
+
 			case 1: 
-				
-			
+				int starthr = 0, endhr = 0, startmin = 0, endmin = 0;
+				s1 = "Enter start time (hour between 0 and 23)";
+				setTimerMain(s1);
+				_input = starthr;
+				s2 = "Enter start time (minute value between 0 and 59)";
+				setTimerMain(s2);
+				_input = startmin;
+				s3 = "Enter end time (hour between 0 and 23)";
+				setTimerMain(s3);
+				_input = endhr;
+				s4 = "Enter end time (minute value between 0 and 59)";
+				setTimerMain(s4);
+				_input = endmin;
+				_modules[0]->setLampTimeInterval(starthr, endhr, startmin, endmin);
+
+				_log.archiveNewActivity("Timer set for lamp");
+				_TimerActive = true;
+			default: 
+				break;
 			}
-
-
 			break;
 
 		default: 
@@ -210,7 +231,7 @@ void PC_Control::activateSystem()
 	string c1 = "Confirm";
 	string c2 = "Exit";
 	standardFront(choices);
-
+	_input = _inputs.readInput();
 	switch (_input) {
 	case 1:
 		if (_ActiveSystem) {
@@ -254,13 +275,31 @@ void PC_Control::setTimer()
 
 	list<string> choices;
 	
-	for (int i = 0 ; i < 10 ; i++) 
+	for (int i = 0 ; i < _modules.size() ; i++) 
 	{
-		string c1 = "lol";
+		string c1 = _modules[i]->getInfo();
 		choices.push_back(c1);
 	}
 
 	_output.draw(header,mains,choices);
 
+
+}
+
+void PC_Control::setTimerMain(string m)
+{
+	//Header
+	string header = "S\x91t Timer";
+
+	//Main
+
+	list<string> mains;
+	string main = m;
+	mains.push_back(main);
+
+	//Choices
+	list<string> choices;
+
+	_output.draw(header, mains, choices);
 
 }

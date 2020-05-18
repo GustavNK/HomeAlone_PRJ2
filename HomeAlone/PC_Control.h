@@ -7,15 +7,14 @@
 #include "Serial.h"
 #include "Gui_In.h"
 #include "Module.h"
-
-#define MAX = 10;
+#include "Lamp.h"
 
 
 
 class PC_Control
 {
 public: 
-	//Constructor
+	//Constructor - Able to set Systemstatus, only because it makes it easier for testing right now. 
 	PC_Control(bool systemStatus);
 
 	//Update Gui
@@ -44,6 +43,7 @@ public:
 
 	//Set Timer
 	void setTimer();
+	void setTimerMain(string m);
 
 
 private: 
@@ -68,7 +68,7 @@ private:
 	Log _log;
 
 	//Array consisting of modules
-	//Module _modules[] { };
+	vector<Module*> _modules;
 
 
 };
