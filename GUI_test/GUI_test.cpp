@@ -24,11 +24,11 @@ int main() {
 	main.push_back("en teks");
 
 	list<string> choice;
-	choice.push_back("1) Valg");
-	choice.push_back("2) Et andet valg");
-	choice.push_back("3) Enndnu et valg");
-	choice.push_back("4) Der er flere");
-	choice.push_back("5) Sidste valg");
+	choice.push_back("Valg");
+	choice.push_back("Et andet valg");
+	choice.push_back("Enndnu et valg");
+	choice.push_back("Der er flere");
+	choice.push_back("Sidste valg");
 
 	g.draw(header, main, main, choice);
 	return 0;
