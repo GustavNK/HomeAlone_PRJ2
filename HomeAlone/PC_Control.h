@@ -1,5 +1,6 @@
 #pragma once
 #include "DE2_Driver.h"
+#include "X10_driver.h"
 #include "Log.h"
 #include "TimeInterval.h"
 #include "User_Interface.h"
@@ -62,7 +63,7 @@ private:
 
 	//UART
 	DE2_driver _DE2;
-	//Serial _x10;
+	X10_driver _x10;
 
 	//Log
 	Log _log;

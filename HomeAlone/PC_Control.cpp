@@ -20,7 +20,7 @@ Project:
 using namespace std;
 
 //Constructor (DE2 SKAL RETTES TIL) 
-PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout()), _DE2(DE2_driver(1,1))
+PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout()), _DE2(DE2_driver()), _x10(X10_driver())
 {
 	
 	_ActiveSystem = systemStatus;
@@ -75,7 +75,7 @@ void PC_Control::updateGui()
 
 		//Show Log
 		case 4: 
-
+			showLog();
 
 			break;
 
@@ -125,9 +125,14 @@ void PC_Control::updateGui()
 		case 1:
 			
 			//read signal from DE2-Board
-			_loggedIn = true;
-
-			break;
+			_DE2.readDE2();
+			if (_DE2.readDE2(1)) {
+				_loggedIn = true;
+				break;
+			}
+			else {
+				break;
+			}
 			
 		//Exit
 		case 2:
@@ -237,14 +242,15 @@ void PC_Control::activateSystem()
 	switch (_input) {
 	case 1:
 		if (_ActiveSystem) {
+
 			//Send shutdown-signal through x10 driver
-			
+			_x10.sendMessage((_modules[0]->getHouse()), (_modules[0]->getUnit()), function::All_Units_On,1);
 			_ActiveSystem = false;
 			_log.archiveNewActivity("System deactivated");
 		}
 		else {
 			//Send turn-on-signal through x10 driver
-			
+			_x10.sendMessage((_modules[0]->getHouse()), (_modules[0]->getUnit()), function::All_Units_Off, 1);
 			_ActiveSystem = true;
 			_log.archiveNewActivity("System activated");
 		}
