@@ -11,6 +11,7 @@ Date finised:
 Project:
 	2. Semester : HomeAlone A/S
 */
+#pragma once
 #include "PC_Control.h"
 #include <string.h>
 #include <list>

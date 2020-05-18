@@ -8,12 +8,16 @@
 // 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
 // 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
+// 1.1 <12.05.20><GustavNK> Addede additional comments and refined the draw() function
+// 1.2 <15.05.20><GustavNK>	Names of defined pipes interfered with other lib. Renamed
 //========================================================================
 
 #include "GUIout.h"
 
+
 using namespace std;
 
+//Empty constructor
 GUIout::GUIout()
 {
 }
@@ -36,11 +40,11 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 	lengthOfText = determineLongestString(choice) > lengthOfText ? determineLongestString(choice) : lengthOfText;
 	size_t lengthOfBox = lengthOfText + 2;
 
-	seperator(lt, hPipe, rt, lengthOfBox);
+	seperator(ltPipe, hPipe, rtPipe, lengthOfBox);
 
 	drawHeader(header, lengthOfBox);
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	//Draw main in right and left
 	list<string>::iterator j = mainRight.begin();
@@ -55,13 +59,15 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 		j++;
 	}
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
-	seperator(lb, hPipe, rb, lengthOfBox);
+	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
+
+	cout << endl << endl << "Indtast Kommando: ";
 }
 
 //============================================================= 
@@ -80,24 +86,26 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 
 	size_t lengthOfBox = lengthOfText + 2;
 
-	seperator(lt, hPipe, rt, lengthOfBox);
+	seperator(ltPipe, hPipe, rtPipe, lengthOfBox);
 
 	drawHeader(header, lengthOfBox);
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	for (list<string>::iterator i = main.begin(); i != main.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
 
-	seperator(rT, hPipe, lT, lengthOfBox);
+	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawText(*i, lengthOfText);
 	}
-	seperator(lb, hPipe, rb, lengthOfBox);
+	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
+
+	cout << endl << endl << "Indtast Kommando: ";
 }
 
 //============================================================= 
@@ -140,7 +148,7 @@ void GUIout::drawHeader(string header, size_t lengthOfBox)
 
 //============================================================= 
 // METHOD : seperator 
-// DESCR. : Ouptut 
+// DESCR. : Ouptut the seperator between lines 
 //============================================================= 
 void GUIout::seperator(char l, char m, char r, size_t len)
 {
@@ -153,15 +161,15 @@ void GUIout::seperator(char l, char m, char r, size_t len)
 }
 
 //============================================================= 
-// METHOD : draw 
-// DESCR. : Takes the header, main body and choices, 
-//          and outputs the on the screen
+// METHOD : :determineLongestString 
+// DESCR. : Takes a list of strings, and determines, which string is
+//     the longest, and returns the length of the longest string
 //============================================================= 
 size_t GUIout::determineLongestString(list<string>& list)
 {
 	size_t longest = 0;
 
-	for (list<string>::iterator i = list.begin(); i != list.end(); i++)
+	for (std::list<string>::iterator i = list.begin(); i != list.end(); i++)
 	{
 		longest = (i->length() > longest) ? i->length() : longest;
 	}
