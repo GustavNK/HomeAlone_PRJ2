@@ -13,7 +13,7 @@ int Gui_In::readInput()
 {
 	int input;
 	cin >> input;
-	_input = ((input > 0) && (input < 60) ? _input : 0);
+	_input = ((input > 0) && (input < 60) ? input : 0);
 
 	return _input;
 }

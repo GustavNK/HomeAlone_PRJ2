@@ -41,7 +41,7 @@ void Module::setUnit(int u)
 	_unit = ((u > 0) && (u < 17) ? u : 0);
 }
 
-string Module::getInfo() const
+string Module::getInfo()
 {
 	string s = "House: ";
 	s += _house;

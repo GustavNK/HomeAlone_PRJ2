@@ -20,7 +20,7 @@ Project:
 using namespace std;
 
 //Constructor (DE2 SKAL RETTES TIL) 
-PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout()), _DE2(DE2_driver()), _x10(X10_driver())
+PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout()), _DE2(DE2_driver()), _x10(X10_driver()),_log(Log(true))
 {
 	
 	_ActiveSystem = systemStatus;
@@ -38,22 +38,23 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 	_Shutdown = false; 
 
 	//Initiate 1 lamp to list of modules.
-	Lamp l1;
-	_modules.push_back(&l1);
+	
+
 	
 }
 
 
+
 void PC_Control::updateGui() 
 {
-	string str1, str2, str3, str4;
+	string str1, str2, str3, str4, message;
+	int starthr{}, endhr{}, startmin{}, endmin{};
 	
 	
 	//Handle input
 	if (_loggedIn) {
 		MainMenu();
-		_log.archiveNewActivity("Login");
-
+		_input = _inputs.readInput();
 		switch (_input) 
 		{
 
@@ -76,34 +77,63 @@ void PC_Control::updateGui()
 		//Show Log
 		case 4: 
 			showLog();
-
+			_input = _inputs.readInput();
+			switch (_input) {
+			case 1: 
+				break;
+			}
 			break;
 
 		//Set Timer (Can currently only handle one lamp. Not final.)
 		case 5:
 			setTimer();
 			_input = _inputs.readInput();
+			
 
 			switch (_input){
 			case 1: 
-				int starthr{}, endhr{}, startmin{}, endmin{};
+				
 				str1 = "Enter start time (hour between 0 and 23)";
 				setTimerMain(str1);
-				_input = starthr;
+				starthr = _inputs.readInput();
 				str2 = "Enter start time (minute value between 0 and 59)";
 				setTimerMain(str2);
-				_input = startmin;
+				startmin = _inputs.readInput();
 				str3 = "Enter end time (hour between 0 and 23)";
 				setTimerMain(str3);
-				_input = endhr;
+				endhr = _inputs.readInput();
 				str4 = "Enter end time (minute value between 0 and 59)";
 				setTimerMain(str4);
-				_input = endmin;
+				endmin = _inputs.readInput();
 				_modules[0]->setLampTimeInterval(starthr, endhr, startmin, endmin);
-
-				_log.archiveNewActivity("Timer set for lamp");
+				
+				message = "Timer set to: (Start: ";
+				message += to_string(starthr);
+				message.append(":");
+				if (startmin < 10) {
+					message += to_string(0);
+					message += to_string(startmin);
+				}
+				else {
+					message += to_string(startmin);
+				}
+				
+				message.append(") (End:");
+				message += to_string(endhr);
+				message.append(":");
+				if (endmin < 10) {
+					message += to_string(0);
+					message += to_string(endmin);
+				}
+				else {
+					message += to_string(endmin);
+				}
+				message.append(")");
+	
+				_log.archiveNewActivity(message);
 				_TimerActive = true;
 				break;
+			
 			default: 
 				break;
 			}
@@ -116,18 +146,18 @@ void PC_Control::updateGui()
 	else {
 		//Front => Login
 		Login();
-
 		//Read input
 		_input = _inputs.readInput();
 
 		switch (_input) {
+			cout << "2";
 		//Login
 		case 1:
 			
 			//read signal from DE2-Board
-			_DE2.readDE2();
 			if (_DE2.readDE2(1)) {
 				_loggedIn = true;
+				_log.archiveNewActivity("Login");
 				break;
 			}
 			else {
@@ -193,10 +223,8 @@ void PC_Control::standardFront(list<string> &choice)
 	right.push_back(right2);
 	right.push_back(right3);
 
-	_output.draw(header,left,right,choice);
+	_output.draw(header,right,left,choice);
 }
-
-
 
 void PC_Control::Login()
 {
@@ -213,7 +241,14 @@ void PC_Control::MainMenu()
 {
 	list<string> choices;
 	string c1 = "Log ud";
-	string c2 = "Aktiver system";
+	string c2;
+	if (_ActiveSystem) {
+		 c2 = "Deaktiver system";
+	}
+	else {
+		c2 = "Aktiver system";
+	}
+	
 	string c3 = "Skift kode";
 	string c4 = "Log";
 	string c5 = "Indstil timer";
@@ -237,6 +272,9 @@ void PC_Control::activateSystem()
 	list<string> choices;
 	string c1 = "Confirm";
 	string c2 = "Exit";
+	choices.push_back(c1);
+	choices.push_back(c2);
+
 	standardFront(choices);
 	_input = _inputs.readInput();
 	switch (_input) {
@@ -272,7 +310,8 @@ void PC_Control::changeCode()
 
 	//Choices
 	list<string> choices;
-	string s1 = "G\x86 til hovedemenu.";
+	string c1 = "G\x86 til hovedemenu.";
+	choices.push_back(c1);
 
 }
 
@@ -287,7 +326,8 @@ void PC_Control::showLog()
 
 	//Choices
 	list<string> choices;
-	string s1 = "G\x86 til hovedemenu.";
+	string c1 = "G\x86 til hovedemenu.";
+	choices.push_back(c1);
 	_output.draw(header, mains, choices);
 
 }
@@ -307,11 +347,13 @@ void PC_Control::setTimer()
 
 	list<string> choices;
 	
-	for (int i = 0 ; i < _modules.size() ; i++) 
+	/*for (int i = 0 ; i < _modules.size()+ 1; i++) 
 	{
 		string c1 = _modules[i]->getInfo();
 		choices.push_back(c1);
-	}
+	}*/
+	string c1 = _modules[0]->getInfo();
+	choices.push_back(c1);
 
 	_output.draw(header,mains,choices);
 
@@ -333,5 +375,11 @@ void PC_Control::setTimerMain(string m)
 	list<string> choices;
 
 	_output.draw(header, mains, choices);
+
+}
+
+void PC_Control::addModule(Module* m)
+{
+	_modules.push_back(m);
 
 }

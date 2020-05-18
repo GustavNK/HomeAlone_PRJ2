@@ -46,6 +46,9 @@ public:
 	void setTimer();
 	void setTimerMain(string m);
 
+	//Modules
+	void addModule(Module* m);
+
 
 private: 
 	//User interface

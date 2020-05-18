@@ -19,7 +19,7 @@ void Lamp::setLampTimeInterval(int startHr,int startMin,int endHr,int endMin)
     _timeInterval.setEndTime(endHr, endMin);
 }
 
-string Lamp::getInfo() const
+string Lamp::getInfo()
 {
     string  s = "Lampe. " ;
     s.append(Module::getInfo());
