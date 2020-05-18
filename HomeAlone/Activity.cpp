@@ -11,8 +11,14 @@ Project: HomeAlone A/S
 
 Activity::Activity(string reason)
 {
-	time_t date_time_ = time(0);
+	date_time_ = time(0);
 
+	reason_ = reason;
+}
+
+Activity::Activity(time_t time, string reason)
+{
+	date_time_ = time;
 	reason_ = reason;
 }
 
@@ -23,7 +29,7 @@ void Activity::setDateTime()
 
 time_t Activity::getDateTime() const
 {
-	return date_time_; 
+	return date_time_;
 }
 
 void Activity::setReason(string reason)
@@ -38,12 +44,12 @@ string Activity::getReason() const
 
 void Activity::print() const
 {
-	//t_time to string
 	struct tm buf;
 	char date_time_string[MAX_BUF];
 
 	localtime_s(&buf, &date_time_);
-	strftime(date_time_string, MAX_BUF, "Date: %B, %d, %Y Time: %T", &buf);
 
-	cout << date_time_string << " Reason: " << reason_ << endl;
+	strftime(date_time_string, MAX_BUF, "Date: %B, %d, %Y Time: %T ", &buf);
+
+	cout << date_time_string << "Reason: " << reason_ << endl;
 }

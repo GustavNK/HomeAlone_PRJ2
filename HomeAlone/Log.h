@@ -8,17 +8,16 @@ Project: HomeAlone A/S
 #include <vector>
 #include "Activity.h"
 
-//Erklære log et sted og så referer til det med pointers, så man kun har en liste. Singletons
-//archiveNewActivity("Fejl i log")
-
 class Log
 {
 public:
-	Log();
-	void archiveNewActivity(string reason); //set-metode
-	string getActivity(); //getReason og getDateTime
+	Log(bool autoText);
+	void archiveNewActivity(string reason); //set-method
+	void archiveNewActivity(Activity activity); //set-method
+	Activity getActivity(int index);
 	int getSize();
-	void print() const;
+	Log getReason(string reason);
+	void showLogList() const;
 private:
 	list<Activity> logList_;
 };

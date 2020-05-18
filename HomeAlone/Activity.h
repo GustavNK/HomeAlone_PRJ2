@@ -14,6 +14,7 @@ class Activity
 {
 public:
 	Activity(string reason);
+	Activity(time_t time, string reason);
 	void setDateTime();
 	time_t getDateTime() const;
 	void setReason(string reason);
@@ -23,4 +24,3 @@ private:
 	string reason_;
 	time_t date_time_;
 };
-
