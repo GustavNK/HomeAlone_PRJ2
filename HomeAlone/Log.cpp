@@ -37,9 +37,9 @@ void Log::archiveNewActivity(Activity activity)
 	logList_.push_back(activity);
 }
 
-Activity Log::getActivity(int index)
+Activity Log::getActivity(int index) const
 {
-	list<Activity>::iterator indexPlace = logList_.begin(); //Points to first element in the list
+	list<Activity>::const_iterator indexPlace = logList_.begin(); //Points to first element in the list
 
 	if (index <= logList_.size())
 	{
@@ -49,12 +49,12 @@ Activity Log::getActivity(int index)
 	return *indexPlace;
 }
 
-int Log::getSize()
+int Log::getSize() const
 {
 	return logList_.size();
 }
 
-Log Log::getReason(string reason)
+Log Log::getReason(string reason) const
 {
 	Log reasonLog(false);
 	list<Activity>::const_iterator logListPtr;
@@ -69,7 +69,21 @@ Log Log::getReason(string reason)
 	return reasonLog;
 }
 
-void Log::showLogList() const
+void Log::returnList(list<string>& stringLogList)
+{
+	//list<string> stringLogList;
+	list<Activity>::iterator logListPtr;
+
+	for (logListPtr = logList_.begin(); logListPtr != logList_.end(); logListPtr++)
+	{
+		//logListPtr->print();
+		//Skal ikke printe, men ligge date_time og reason sammen i en list<string>
+		stringLogList.push_back(logListPtr->getActivityStr());
+
+	}
+}
+
+void Log::showLogList() const //Skal ikke være med i Log
 {
 	list<Activity>::const_iterator logListPtr;
 

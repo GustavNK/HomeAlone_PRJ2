@@ -138,6 +138,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TesterForLog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeAlone\HomeAlone.vcxproj">
+      <Project>{8404b98f-7dc0-42ec-9ff5-604e98a0685d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

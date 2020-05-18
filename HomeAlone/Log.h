@@ -14,10 +14,11 @@ public:
 	Log(bool autoText);
 	void archiveNewActivity(string reason); //set-method
 	void archiveNewActivity(Activity activity); //set-method
-	Activity getActivity(int index);
-	int getSize();
-	Log getReason(string reason);
-	void showLogList() const;
+	Activity getActivity(int index) const;
+	int getSize() const;
+	Log getReason(string reason) const;
+	void returnList(list<string>&);
+	void showLogList() const; //Log må ikke printe, da det er en domain-klasse
 private:
 	list<Activity> logList_;
 };

@@ -7,7 +7,7 @@ Project: HomeAlone A/S
 #include <ctime>
 #include "Activity.h"
 
-#define MAX_BUF 50
+#define MAX_BUF 100
 
 Activity::Activity(string reason)
 {
@@ -40,6 +40,20 @@ void Activity::setReason(string reason)
 string Activity::getReason() const
 {
 	return reason_;
+}
+
+string Activity::getActivityStr() const
+{
+	struct tm buf;
+	char date_time_string[MAX_BUF];
+
+	localtime_s(&buf, &date_time_);
+
+	strftime(date_time_string, MAX_BUF, "Date: %B, %d, %Y Time: %T ", &buf);
+	strcat_s(date_time_string, "Reason: ");
+	strcat_s(date_time_string, reason_.c_str());
+
+	return date_time_string;
 }
 
 void Activity::print() const

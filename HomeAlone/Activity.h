@@ -19,6 +19,7 @@ public:
 	time_t getDateTime() const;
 	void setReason(string reason);
 	string getReason() const;
+	string getActivityStr() const;
 	void print() const;
 private:
 	string reason_;
