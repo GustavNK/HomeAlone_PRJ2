@@ -1,16 +1,16 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../HomeAlone/Time_class.h"
+#include "../HomeAlone/Log.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace TimeclassTest
+namespace LogClassTest
 {
-	TEST_CLASS(TimeclassTest)
+	TEST_CLASS(LogClassTest)
 	{
 	public:
-		
+
 		//Test constructor/getter hr + min
 		TEST_METHOD(TimeConstr)
 		{

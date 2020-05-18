@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{8404B98F-7DC0-42EC-9FF5-604E98A0685D}</ProjectGuid>
-    <RootNamespace>HomeAlone</RootNamespace>
+    <ProjectGuid>{6CF7F183-716C-4376-B36F-891CC4768378}</ProjectGuid>
+    <RootNamespace>Logetestermmain</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -39,7 +39,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -69,10 +69,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,7 +81,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -93,7 +93,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -138,32 +138,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Activity.cpp" />
-    <ClCompile Include="DE2_Driver.cpp" />
-    <ClCompile Include="GUIout.cpp" />
-    <ClCompile Include="Log.cpp" />
-    <ClCompile Include="PC_Control.cpp" />
-    <ClCompile Include="Serial.cpp" />
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Source1.cpp" />
-    <ClCompile Include="TimeInterval.cpp" />
-    <ClCompile Include="Time_class.cpp" />
-    <ClCompile Include="UART.cpp" />
-    <ClCompile Include="User_Interface.cpp" />
-    <ClCompile Include="X10_driver.cpp" />
+    <ClCompile Include="TesterForLog.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Activity.h" />
-    <ClInclude Include="DE2_Driver.h" />
-    <ClInclude Include="GUIout.h" />
-    <ClInclude Include="Log.h" />
-    <ClInclude Include="PC_Control.h" />
-    <ClInclude Include="Serial.h" />
-    <ClInclude Include="TimeInterval.h" />
-    <ClInclude Include="Time_class.h" />
-    <ClInclude Include="UART.h" />
-    <ClInclude Include="User_Interface.h" />
-    <ClInclude Include="X10_driver.h" />
+    <ProjectReference Include="..\HomeAlone\HomeAlone.vcxproj">
+      <Project>{8404b98f-7dc0-42ec-9ff5-604e98a0685d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
