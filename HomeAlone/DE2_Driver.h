@@ -34,6 +34,6 @@ public:
 	bool sendDE2(bool data) ;
 	bool sendDE2(bool data, int i); //Dummy function
 private:
-	const char trueChar_ = 'z';
-	const char falseChar_ = '0';
+	const char trueChar_ = 'z'; //char seen as true for the DE2
+	const char falseChar_ = '0'; //char seen as false for the DE2
 };
