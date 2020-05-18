@@ -72,6 +72,7 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawChoice(*i, lengthOfText, choiceCount);
+		choiceCount++;
 	}
 	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
 
@@ -112,6 +113,7 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
 		drawChoice(*i, lengthOfText, choiceCount);
+		choiceCount++;
 	}
 	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
 
