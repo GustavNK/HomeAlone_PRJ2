@@ -53,7 +53,7 @@ void PC_Control::updateGui()
 	
 	//Handle input
 	if (_loggedIn) {
-		MainMenu();
+		mainMenu();
 		_input = _inputs.readInput();
 		switch (_input) 
 		{
@@ -61,7 +61,7 @@ void PC_Control::updateGui()
 		//Logout
 		case 1: 
 			_log.archiveNewActivity("Logout");
-			Logout();
+			logout();
 			break;
 
 		//Activate/Deactivate system
@@ -77,9 +77,12 @@ void PC_Control::updateGui()
 		//Show Log
 		case 4: 
 			showLog();
+			_log.archiveNewActivity("Log vist");
+
 			_input = _inputs.readInput();
 			switch (_input) {
 			case 1: 
+				
 				break;
 			}
 			break;
@@ -93,21 +96,21 @@ void PC_Control::updateGui()
 			switch (_input){
 			case 1: 
 				
-				str1 = "Enter start time (hour between 0 and 23)";
+				str1 = "Enter start time (hour between 0 and 23 / default = 0)";
 				setTimerMain(str1);
 				starthr = _inputs.readInput();
-				str2 = "Enter start time (minute value between 0 and 59)";
+				str2 = "Enter start time (minute value between 0 and 59 / default = 0)";
 				setTimerMain(str2);
 				startmin = _inputs.readInput();
-				str3 = "Enter end time (hour between 0 and 23)";
+				str3 = "Enter end time (hour between 0 and 23  / default = 0)";
 				setTimerMain(str3);
 				endhr = _inputs.readInput();
-				str4 = "Enter end time (minute value between 0 and 59)";
+				str4 = "Enter end time (minute value between 0 and 59  / default = 0)";
 				setTimerMain(str4);
 				endmin = _inputs.readInput();
-				_modules[0]->setLampTimeInterval(starthr, endhr, startmin, endmin);
+				_modules[0]->setLampTimeInterval(starthr, startmin, endhr, endmin);
 				
-				message = "Timer set to: (Start: ";
+				message = "Timer sat til: (Start: ";
 				message += to_string(starthr);
 				message.append(":");
 				if (startmin < 10) {
@@ -134,6 +137,17 @@ void PC_Control::updateGui()
 				_TimerActive = true;
 				break;
 			
+			case 2:
+				if (_TimerActive) {
+					_TimerActive = false;
+					_log.archiveNewActivity("Timer aktiveret");
+				}
+				else {
+					_TimerActive = true;
+					_log.archiveNewActivity("Timer deaktiveret");
+				}
+				
+				break;
 			default: 
 				break;
 			}
@@ -145,7 +159,7 @@ void PC_Control::updateGui()
 	}
 	else {
 		//Front => Login
-		Login();
+		login();
 		//Read input
 		_input = _inputs.readInput();
 
@@ -161,6 +175,8 @@ void PC_Control::updateGui()
 				break;
 			}
 			else {
+				_log.archiveNewActivity("Login mislykkedes");
+				
 				break;
 			}
 			
@@ -226,7 +242,7 @@ void PC_Control::standardFront(list<string> &choice)
 	_output.draw(header,right,left,choice);
 }
 
-void PC_Control::Login()
+void PC_Control::login()
 {
 	list<string> choices;
 	string c1 = "Log Ind";
@@ -237,7 +253,7 @@ void PC_Control::Login()
 	standardFront(choices);
 }
 
-void PC_Control::MainMenu()
+void PC_Control::mainMenu()
 {
 	list<string> choices;
 	string c1 = "Log ud";
@@ -261,7 +277,7 @@ void PC_Control::MainMenu()
 	standardFront(choices);
 }
 
-void PC_Control::Logout()
+void PC_Control::logout()
 {
 	_loggedIn = false;
 }
@@ -340,20 +356,32 @@ void PC_Control::setTimer()
 	//Main
 	list<string> mains;
 
-	string main = "V\x91lg hvilket modul du gerne vil s\x91tte timer for. V\x91r opm\x91rksom p\x86 at der kun kan s\x91ttes tidsinterval for lamper.";
-	mains.push_back(main);
+	string m1 = "V\x91lg hvilket modul du gerne vil s\x91tte timer for. V\x91r opm\x91rksom p\x86 at der kun kan s\x91ttes tidsinterval for lamper.";
+	string m2 = "Nuværende timer sat til: ";
+	m2.append(_modules[0]->getTimeInterval());
+	
+	mains.push_back(m1);
+	mains.push_back(m2);
+	
 
 	//Choices
 
 	list<string> choices;
 	
-	/*for (int i = 0 ; i < _modules.size()+ 1; i++) 
-	{
-		string c1 = _modules[i]->getInfo();
-		choices.push_back(c1);
-	}*/
 	string c1 = _modules[0]->getInfo();
+	string c2;
+
+	if (_TimerActive) {
+		c2 = "Deaktiver nuv\x91rende timer";
+	}
+	else {
+		c2 = "Aktiver nuværende timer";
+	}
+	
+	string c3 = "G\x86 til hovedemenu.";
 	choices.push_back(c1);
+	choices.push_back(c2);
+	choices.push_back(c3);
 
 	_output.draw(header,mains,choices);
 
