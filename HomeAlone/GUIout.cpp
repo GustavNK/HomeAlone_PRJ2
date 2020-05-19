@@ -10,6 +10,11 @@
 // 1.0 <13.05.20> The class seems to work, but needs a lot of comments and refining
 // 1.1 <12.05.20><GustavNK> Addede additional comments and refined the draw() function
 // 1.2 <15.05.20><GustavNK>	Names of defined pipes interfered with other lib. Renamed
+// 1.3 <18.05.20><GustavNK> Added counting to the printing of choice
+//------------------------------------------------------------------------ 
+// TODO
+// Implement a line shift for the draw(string, list<string>, list<string>)
+//   to ensure the lines wont b to long
 //========================================================================
 
 #include "GUIout.h"
@@ -28,6 +33,7 @@ GUIout::GUIout()
 //============================================================= 
 void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRight, list<string>& choice)
 {
+	system("CLS");
 	size_t lengthOfText;
 
 	//determine lengths of the main body
@@ -61,9 +67,12 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 
 	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
 
+	int choiceCount = 1;
+
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
-		drawText(*i, lengthOfText);
+		drawChoice(*i, lengthOfText, choiceCount);
+		choiceCount++;
 	}
 	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
 
@@ -82,7 +91,7 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 
 	lengthOfText = header.length();
 	lengthOfText = determineLongestString(main) > lengthOfText ? determineLongestString(main) : lengthOfText;
-	lengthOfText = determineLongestString(choice) > lengthOfText ? determineLongestString(choice) : lengthOfText;
+	lengthOfText = determineLongestString(choice) + 3 > lengthOfText ? determineLongestString(choice) + 3: lengthOfText;
 
 	size_t lengthOfBox = lengthOfText + 2;
 
@@ -98,10 +107,13 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 	}
 
 	seperator(rTPipe, hPipe, lTPipe, lengthOfBox);
+	
+	int choiceCount = 1;
 
 	for (list<string>::iterator i = choice.begin(); i != choice.end(); i++)
 	{
-		drawText(*i, lengthOfText);
+		drawChoice(*i, lengthOfText, choiceCount);
+		choiceCount++;
 	}
 	seperator(lbPipe, hPipe, rbPipe, lengthOfBox);
 
@@ -122,6 +134,25 @@ void GUIout::drawText(string text, size_t lengthOfText)
 		cout << " ";
 	}
 	cout << vPipe << endl;
+}
+
+
+//============================================================= 
+// METHOD : drawChoice
+// DESCR. : Ouputs 1 line of text with pipes and spaces on the sides
+//		    with correct seperation. Adds the choice number first
+//============================================================= 
+void GUIout::drawChoice(string text, size_t lengthOfText, int choiceCount)
+{
+	lengthOfText -= 3;
+
+	cout << vPipe << " " << choiceCount << ") "<< text;
+
+	for (size_t i = 0; i <= lengthOfText - text.length(); i++)
+	{
+		cout << " ";
+	}
+		cout << vPipe << endl;
 }
 
 //============================================================= 
