@@ -7,9 +7,37 @@ Lamp::Lamp(char house, int unit) : Module(house, unit)
     _timeInterval = TimeInterval();
 }
 
-TimeInterval* Lamp::getTimeInterval()
+string Lamp::getTimeInterval()
 {
-    return &_timeInterval;
+    string s;
+    s.append("Starttidspunkt: ");
+    int sh = _timeInterval.getStartTime().getHour();
+    s += to_string(sh);
+    s.append(":");
+    int sm = _timeInterval.getStartTime().getMin();
+    if (sm < 10) {
+        s += to_string(0);
+        s += to_string(sm);
+    }
+    else {
+        s += to_string(sm);
+    }
+
+    s.append(". Sluttidspunkt: ");
+    int eh = _timeInterval.getEndTime().getHour();
+    s += to_string(eh);
+    s.append(":");
+    int em = _timeInterval.getEndTime().getMin();
+
+    if (em < 10) {
+        s += to_string(0);
+        s += to_string(em);
+    }
+    else {
+        s += to_string(em);
+    }
+    s.append(".");
+    return s;
 }
 
 
