@@ -62,7 +62,6 @@ private:
 	bool _loggedIn;
 	bool _ActiveSystem; 
 	bool _TimerActive;
-	bool _Shutdown;
 
 	//UART
 	DE2_driver _DE2;

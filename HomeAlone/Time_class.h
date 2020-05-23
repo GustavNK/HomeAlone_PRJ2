@@ -25,7 +25,6 @@ public:
 	void setSec(int);
 
 	//getter
-	void getTime_class(int& hours, int& minutes) const;
 	int getHour() const;
 	int getMin() const;
 	int getSec() const;

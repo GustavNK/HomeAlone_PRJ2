@@ -32,14 +32,7 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 	_loggedIn = false;
 
 	//Whether a timer is active for a module
-	_TimerActive = false;
-	
-	//Controls while-loop in main. Set true to exit program
-	_Shutdown = false; 
-
-	//Initiate 1 lamp to list of modules.
-	
-
+	_TimerActive = false;	
 	
 }
 
@@ -177,7 +170,6 @@ void PC_Control::login()
 
 		//Exit
 	case 2:
-		_Shutdown = true;
 		exit(1);
 		break;
 
