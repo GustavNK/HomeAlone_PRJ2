@@ -26,7 +26,7 @@ X10_driver::X10_driver(int comPort, int baudRate) : UART(comPort, baudRate)
 }
 
 //============================================================= 
-// METHOD : sendMessage --DUMMY--
+// METHOD : sendMessage
 // DESCR. : Sends 3 char to Transmitter
 //============================================================= 
 bool X10_driver::sendMessage(char house, int unit, function func)
@@ -51,7 +51,7 @@ bool X10_driver::sendMessage(char house, int unit, function func)
 // METHOD : sendMessage --DUMMY--
 // DESCR. : Always returns true. Made for testing
 //============================================================= 
-bool X10_driver::sendMessage(char house, int unit, function func, int i)
+bool X10_driver::sendMessage(char house, int unit, function func, int dummy)
 {
 	return true;
 }

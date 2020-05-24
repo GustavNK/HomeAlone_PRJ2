@@ -31,10 +31,10 @@ class DE2_driver : public UART
 public:
 	DE2_driver(int comPort = 2, int baudRate = 9600); //comPort is the USB port used by the UART driver
 	bool readDE2();
-	bool readDE2(int i); //Dummy function
+	bool readDE2(int dummmy); //Dummy function
 	bool sendDE2(bool data) ;
 	bool sendDE2(bool data, int i); //Dummy function
 private:
-	const char trueChar_ = 'z'; //char seen as true for the DE2
-	const char falseChar_ = '0'; //char seen as false for the DE2
+	const char trueChar_ = 0b11111111; //char seen as true for the DE2
+	const char falseChar_ = 0b00000000; //char seen as false for the DE2
 };

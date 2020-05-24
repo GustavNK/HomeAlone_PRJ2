@@ -54,7 +54,7 @@ bool DE2_driver::readDE2()
 // METHOD : readDE2 --DUMMY--
 // DESCR. : Always returns the expected bool, true. Made for testing
 //============================================================= 
-bool DE2_driver::readDE2(int i)
+bool DE2_driver::readDE2(int dummy)
 {
 	return true;
 }

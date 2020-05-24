@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Activity.h" />
     <ClInclude Include="DE2_Driver.h" />
+    <ClInclude Include="function.h" />
     <ClInclude Include="GUIout.h" />
     <ClInclude Include="Gui_In.h" />
     <ClInclude Include="Lamp.h" />
@@ -170,6 +171,9 @@
     <ClInclude Include="UART.h" />
     <ClInclude Include="User_Interface.h" />
     <ClInclude Include="X10_driver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
