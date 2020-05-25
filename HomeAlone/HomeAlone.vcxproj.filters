@@ -93,6 +93,9 @@
     <ClInclude Include="UART.h">
       <Filter>Header filer</Filter>
     </ClInclude>
+    <ClInclude Include="function.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header filer">
@@ -101,5 +104,8 @@
     <Filter Include="Source">
       <UniqueIdentifier>{df3f0866-9085-4464-9efa-25064fe811d9}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
