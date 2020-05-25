@@ -30,8 +30,7 @@ DE2_driver::DE2_driver(int comPort, int baudRate) : UART(comPort, baudRate)
 
 //============================================================= 
 // METHOD : readDE2 
-// DESCR. : Reads what is available at the comPort. char 'z' is
-//			read as a true. All others are seen as false
+// DESCR. : Reads what is available at the comPort. 
 //============================================================= 
 bool DE2_driver::readDE2()
 {

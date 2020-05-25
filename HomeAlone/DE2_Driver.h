@@ -3,8 +3,8 @@
 // CREATED  : 06/05/20
 // AUTHOR	: GustavNK
 // DESCR.   : Handles the UART output and input to/from the DE2 Board
-//------------------------------------------------------------------------ 
 //
+//------------------------------------------------------------------------ 
 // REV. DATE/AUTHOR CHANGE DESCRIPTION 
 // 1.0 <13.05.20><GustavNK> Initial creation and inplemnetet into master
 // 1.1 <14.05.20><GustavNK> Made into a child of CSerial and better comments
@@ -13,18 +13,15 @@
 //							Made trueChar_ and falseChar into const char
 // 2.0 <15.05.20><GustavNK>	Made into child og UART, to make comPort and BaudRate
 //							the same between DE2_driver and X10_driver
+//
 //------------------------------------------------------------------------ 
 // TODO
 //
 //========================================================================
 
-
 #pragma once
-#pragma message ("World object is defined")
 #include "UART.h"
 #include <iostream>
-
-//Char send from DE2 when reporting false or true
 
 class DE2_driver : public UART
 {
