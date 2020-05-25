@@ -9,6 +9,7 @@
 // 1.0 <14.05.20><GustavNK> Initial creation and writng of class
 // 2.0 <15.05.20><GustavNK> Remade into a child of UART
 //							Split sendMessage() with a sepearte manchester translator
+// 2.1 <25.05.20><GustavNK> A seperate file has been made for the enum function
 //
 //------------------------------------------------------------------------ 
 // TODO
