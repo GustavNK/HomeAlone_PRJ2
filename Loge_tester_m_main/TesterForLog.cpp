@@ -44,18 +44,35 @@ int main(void) {
 	cout << "Ny test" << endl;
 	Log log2(true), log3(false);
 	log2.archiveNewActivity("Log in");
-	log2.archiveNewActivity("Andet");
+	log2.archiveNewActivity("Aktivering: 1");
+	log2.archiveNewActivity("Deaktivering: 1");
 	log2.archiveNewActivity("Log out");
 	Sleep(1000);
 	log2.archiveNewActivity("Log in");
+	log2.archiveNewActivity("Aktivering: 2");
+	Sleep(1000);
+	log2.archiveNewActivity("Deaktivering: 2");
 	log2.archiveNewActivity("Andet");
 	log2.archiveNewActivity("Log out");
 	log2.showLogList();
 
-	cout << "Search for: Log in" << endl;
+	cout << "Search for: Log" << endl;
+	list<string> l2;
+	log2.searchReason("Log", l2);
+	for (strListPtr = l2.begin(); strListPtr != l2.end(); strListPtr++)
+	{
+		cout << strListPtr->c_str() << endl;
+	}
+	cout << endl;
 
-	log3 = log2.getReason("Log in");  // returnere en ny log
-	log3.showLogList();
+	l2.clear();
+	log2.searchReason("Aktivering", l2);
+	for (strListPtr = l2.begin(); strListPtr != l2.end(); strListPtr++)
+	{
+		cout << strListPtr->c_str() << endl;
+	}
+	cout << endl;
+
 
 	return 0;
 }

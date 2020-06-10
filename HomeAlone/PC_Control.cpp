@@ -229,7 +229,7 @@ void PC_Control::standardFront(list<string> &choice)
 void PC_Control::Login()
 {
 	list<string> choices;
-	string c1 = "Log Ind";
+	string c1 = "Log ind";
 	string c2 = "Exit";
 	choices.push_back(c1);
 	choices.push_back(c2);
