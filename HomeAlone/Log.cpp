@@ -5,6 +5,7 @@ Date finised:
 Project: HomeAlone A/S
 */
 #include <iterator>
+#include <algorithm>
 #include "Log.h"
 
 int MAX_SIZE = 10;
@@ -54,29 +55,48 @@ int Log::getSize() const
 	return logList_.size();
 }
 
-Log Log::getReason(string reason) const
+//Log Log::searchReason(string reason) const
+//{
+//	Log reasonLog(false);
+//	list<Activity>::const_iterator logListPtr;
+//
+//	for (logListPtr = logList_.begin(); logListPtr != logList_.end(); logListPtr++)
+//	{
+//		if (logListPtr->getReason() == reason)
+//		{
+//			reasonLog.archiveNewActivity(*logListPtr);
+//		}
+//	}
+//	return reasonLog;
+//}
+
+void Log::searchReason(string reason, list<string>& stringLogList) const
 {
-	Log reasonLog(false);
 	list<Activity>::const_iterator logListPtr;
+	string tmpStr;
 
 	for (logListPtr = logList_.begin(); logListPtr != logList_.end(); logListPtr++)
 	{
-		if (logListPtr->getReason() == reason)
+
+		transform(reason.begin(), reason.end(), reason.begin(), ::tolower);
+
+		tmpStr = logListPtr->getReason();
+		transform(tmpStr.begin(), tmpStr.end(), tmpStr.begin(), ::tolower);
+
+		//n = tmpStr.find(reason);
+		if (tmpStr.find(reason) != -1)
 		{
-			reasonLog.archiveNewActivity(*logListPtr);
+			stringLogList.push_back(logListPtr->getActivityStr());
 		}
 	}
-	return reasonLog;
 }
 
 void Log::returnList(list<string>& stringLogList)
 {
-	//list<string> stringLogList;
 	list<Activity>::iterator logListPtr;
 
 	for (logListPtr = logList_.begin(); logListPtr != logList_.end(); logListPtr++)
 	{
-		//logListPtr->print();
 		//Skal ikke printe, men ligge date_time og reason sammen i en list<string>
 		stringLogList.push_back(logListPtr->getActivityStr());
 

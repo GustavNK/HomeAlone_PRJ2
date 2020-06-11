@@ -16,7 +16,7 @@ public:
 	void archiveNewActivity(Activity activity); //set-method
 	Activity getActivity(int index) const;
 	int getSize() const;
-	Log getReason(string reason) const;
+	void searchReason(string reason, list<string>&) const;
 	void returnList(list<string>&);
 	void showLogList() const; //Log må ikke printe, da det er en domain-klasse
 private:
