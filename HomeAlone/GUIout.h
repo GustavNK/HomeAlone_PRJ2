@@ -20,15 +20,8 @@
 #include <math.h>
 #include <stdlib.h>
 
-//Define a shortcut for the pipes-ASCII used
-#define rtPipe '\xBB'
-#define ltPipe '\xC9'
-#define rbPipe '\xBC'
-#define lbPipe '\xC8'
-#define hPipe '\xCD'
-#define vPipe '\xBA'
-#define lTPipe '\xB9'
-#define rTPipe '\xCC'
+//Define a shortcut for the ASCII-pipes used
+
 
 using namespace std;
 
@@ -39,9 +32,20 @@ public:
 	void draw(string &header, list<string> &mainLeft, list<string>& mainRight, list<string> &choice);
 	void draw(string &header, list<string> &main, list<string> &choice);
 private:
+	//Private methods
 	size_t determineLongestString(list<string>& list);
 	void drawText(string, size_t length);
 	void drawChoice(string, size_t length, int choiceCount);
 	void drawHeader(string header, size_t lengthOfBox);
 	void seperator(char l, char m, char r, size_t len);
+
+	//Define a shortcut for the ASCII-pipes used
+	const char rtPipe = '\xBB';
+	const char ltPipe = '\xC9';
+	const char rbPipe = '\xBC';
+	const char lbPipe = '\xC8';
+	const char hPipe = '\xCD';
+	const char vPipe = '\xBA';
+	const char lTPipe = '\xB9';
+	const char rTPipe = '\xCC';
 };

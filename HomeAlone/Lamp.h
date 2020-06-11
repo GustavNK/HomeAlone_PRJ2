@@ -1,6 +1,9 @@
 #pragma once
 #include "Module.h"
 #include "TimeInterval.h"
+#include <string>
+#include <stdio.h>
+#include <cstring>
 
 class Lamp : public Module
 {
@@ -9,10 +12,10 @@ public:
 	Lamp(char house ='X', int unit = 0);
 
 	//Get
-	TimeInterval* getTimeInterval();
+	string getTimeInterval();
 
 	//Set
-	virtual void setLampTimeInterval(int h1,int h2,int m1,int m2);
+	virtual void setLampTimeInterval(int h1,int m1,int h2,int m2);
 
 	//print
 	virtual string getInfo();

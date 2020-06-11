@@ -94,7 +94,9 @@
     <ClInclude Include="UART.h">
       <Filter>Header filer</Filter>
     </ClInclude>
-    <ClInclude Include="Activity.h" />
+    <ClInclude Include="function.h">
+      <Filter>Header filer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header filer">

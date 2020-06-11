@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Activity.h" />
     <ClInclude Include="DE2_Driver.h" />
+    <ClInclude Include="function.h" />
     <ClInclude Include="GUIout.h" />
     <ClInclude Include="Gui_In.h" />
     <ClInclude Include="Lamp.h" />

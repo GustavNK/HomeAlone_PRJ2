@@ -47,13 +47,12 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 
 void PC_Control::updateGui() 
 {
-	string str1, str2, str3, str4, message;
-	int starthr{}, endhr{}, startmin{}, endmin{};
+	
 	
 	
 	//Handle input
 	if (_loggedIn) {
-		MainMenu();
+		mainMenu();
 		_input = _inputs.readInput();
 		switch (_input) 
 		{
@@ -61,7 +60,7 @@ void PC_Control::updateGui()
 		//Logout
 		case 1: 
 			_log.archiveNewActivity("Logout");
-			Logout();
+			logout();
 			break;
 
 		//Activate/Deactivate system
@@ -77,66 +76,13 @@ void PC_Control::updateGui()
 		//Show Log
 		case 4: 
 			showLog();
-			_input = _inputs.readInput();
-			switch (_input) {
-			case 1: 
-				break;
-			}
+			
 			break;
 
 		//Set Timer (Can currently only handle one lamp. Not final.)
 		case 5:
 			setTimer();
-			_input = _inputs.readInput();
-			
 
-			switch (_input){
-			case 1: 
-				
-				str1 = "Enter start time (hour between 0 and 23)";
-				setTimerMain(str1);
-				starthr = _inputs.readInput();
-				str2 = "Enter start time (minute value between 0 and 59)";
-				setTimerMain(str2);
-				startmin = _inputs.readInput();
-				str3 = "Enter end time (hour between 0 and 23)";
-				setTimerMain(str3);
-				endhr = _inputs.readInput();
-				str4 = "Enter end time (minute value between 0 and 59)";
-				setTimerMain(str4);
-				endmin = _inputs.readInput();
-				_modules[0]->setLampTimeInterval(starthr, endhr, startmin, endmin);
-				
-				message = "Timer set to: (Start: ";
-				message += to_string(starthr);
-				message.append(":");
-				if (startmin < 10) {
-					message += to_string(0);
-					message += to_string(startmin);
-				}
-				else {
-					message += to_string(startmin);
-				}
-				
-				message.append(") (End:");
-				message += to_string(endhr);
-				message.append(":");
-				if (endmin < 10) {
-					message += to_string(0);
-					message += to_string(endmin);
-				}
-				else {
-					message += to_string(endmin);
-				}
-				message.append(")");
-	
-				_log.archiveNewActivity(message);
-				_TimerActive = true;
-				break;
-			
-			default: 
-				break;
-			}
 			break;
 
 		default: 
@@ -144,37 +90,8 @@ void PC_Control::updateGui()
 		}
 	}
 	else {
-		//Front => Login
-		Login();
-		//Read input
-		_input = _inputs.readInput();
-
-		switch (_input) {
-			cout << "2";
-		//Login
-		case 1:
-			
-			//read signal from DE2-Board
-			if (_DE2.readDE2(1)) {
-				_loggedIn = true;
-				_log.archiveNewActivity("Login");
-				break;
-			}
-			else {
-				break;
-			}
-			
-		//Exit
-		case 2:
-			_Shutdown = true;
-			exit(1);
-			break;
-
-		default: 
-			cout << "Try again" << endl;
-			break;
-		}
-
+		//Login method
+		login();
 	}
 
 }
@@ -226,7 +143,7 @@ void PC_Control::standardFront(list<string> &choice)
 	_output.draw(header,right,left,choice);
 }
 
-void PC_Control::Login()
+void PC_Control::login()
 {
 	list<string> choices;
 	string c1 = "Log ind";
@@ -235,9 +152,43 @@ void PC_Control::Login()
 	choices.push_back(c2);
 
 	standardFront(choices);
+
+	//Read input
+	_input = _inputs.readInput();
+
+	switch (_input) {
+		cout << "2";
+		//Login
+	case 1:
+		//Send ready signal to DE2-board
+		_DE2.sendDE2(true, 1);
+
+		//read signal from DE2-Board
+		if (_DE2.readDE2(1)) {
+			_loggedIn = true;
+			_log.archiveNewActivity("Login");
+			break;
+		}
+		else {
+			_log.archiveNewActivity("Login mislykkedes");
+
+			break;
+		}
+
+		//Exit
+	case 2:
+		_Shutdown = true;
+		exit(1);
+		break;
+
+	default:
+		cout << "Try again" << endl;
+		break;
+	}
+
 }
 
-void PC_Control::MainMenu()
+void PC_Control::mainMenu()
 {
 	list<string> choices;
 	string c1 = "Log ud";
@@ -261,7 +212,7 @@ void PC_Control::MainMenu()
 	standardFront(choices);
 }
 
-void PC_Control::Logout()
+void PC_Control::logout()
 {
 	_loggedIn = false;
 }
@@ -301,17 +252,49 @@ void PC_Control::activateSystem()
 
 void PC_Control::changeCode()
 {
+	_DE2.sendDE2(false,1);
+
 	//Header
-	string header = "Skift kode på DE2-Board";
+	string header = "Skift kode p\x86 DE2-Board";
 
 	//Main
-	string s1 = "For at skifte koden skal man gøre følgende:";
-	string s2 = "1. ";
+	list<string> main;
+	string m1 = "For at skifte koden skal man g\x9Bre f\x9Blgende:";
+	string m2 = "1. Indtast den gamle kode og tryk p\x86 key 1.";
+	string m3 = "2. Indtast den nye kode og tryk p\x86 key 2.";
+	string m4 = "3. Indtast den nye kode igen og tryk p\x86 key 3";
+	string m5 = "4. Den nye kode skulle nu v\x91re sat.";
+	string m6 = "OBS: For at afbryde skift af kode, tryk p\x86 reset (key 0)";
+	main.push_back(m1);
+	main.push_back(m2);
+	main.push_back(m3);
+	main.push_back(m4);
+	main.push_back(m5);
+	main.push_back(m6);
 
 	//Choices
 	list<string> choices;
 	string c1 = "G\x86 til hovedemenu.";
 	choices.push_back(c1);
+
+	//Draw terminal
+	_output.draw(header, main, choices);
+
+	//Læs svar fra DE2-board
+	if (_DE2.readDE2()) {
+		_log.archiveNewActivity("Kode \x91ndret");
+	}
+	else {
+		_log.archiveNewActivity("Kode fors\x9Bgt \x91ndret uden held.");
+	}
+
+	_input = _inputs.readInput();
+	switch (_input) {
+	case 1: 
+		break;
+	default: 
+		break;
+	}
 
 }
 
@@ -330,33 +313,117 @@ void PC_Control::showLog()
 	choices.push_back(c1);
 	_output.draw(header, mains, choices);
 
+	_log.archiveNewActivity("Log vist");
+	
+	_input = _inputs.readInput();
+	switch (_input) {
+	case 1:
+
+		break;
+	}
+
 }
 
 void PC_Control::setTimer()
 {
+	string str1, str2, str3, str4, message;
+	int starthr{}, endhr{}, startmin{}, endmin{};
 	//Header
 	string header = "S\x91t timer";
 	
 	//Main
 	list<string> mains;
 
-	string main = "V\x91lg hvilket modul du gerne vil s\x91tte timer for. V\x91r opm\x91rksom p\x86 at der kun kan s\x91ttes tidsinterval for lamper.";
-	mains.push_back(main);
+	string m1 = "V\x91lg hvilket modul du gerne vil s\x91tte timer for. V\x91r opm\x91rksom p\x86 at der kun kan s\x91ttes tidsinterval for lamper.";
+	string m2 = "Nuværende timer sat til: ";
+	m2.append(_modules[0]->getTimeInterval());
+	
+	mains.push_back(m1);
+	mains.push_back(m2);
+	
 
 	//Choices
 
 	list<string> choices;
 	
-	/*for (int i = 0 ; i < _modules.size()+ 1; i++) 
-	{
-		string c1 = _modules[i]->getInfo();
-		choices.push_back(c1);
-	}*/
 	string c1 = _modules[0]->getInfo();
+	string c2;
+
+	if (_TimerActive) {
+		c2 = "Deaktiver nuv\x91rende timer";
+	}
+	else {
+		c2 = "Aktiver nuv\x91rende timer";
+	}
+	
+	string c3 = "G\x86 til hovedemenu.";
 	choices.push_back(c1);
+	choices.push_back(c2);
+	choices.push_back(c3);
 
 	_output.draw(header,mains,choices);
 
+	_input = _inputs.readInput();
+
+
+	switch (_input) {
+	case 1:
+
+		str1 = "Indtast starttidspunkt (time-v\x91rdi mellem 0 og 23 / default = 0)";
+		setTimerMain(str1);
+		starthr = _inputs.readInput();
+		str2 = "Indtast starttidspunkt (minut-v\x91rdi mellem 0 og 59 / default = 0)";
+		setTimerMain(str2);
+		startmin = _inputs.readInput();
+		str3 = "Indtast sluttidspunkt (time-v\x91rdi mellem 0 og 23  / default = 0)";
+		setTimerMain(str3);
+		endhr = _inputs.readInput();
+		str4 = "Indtast sluttidspunkt (minut-v\x91rdi mellem 0 og 59 / default = 0)";
+		setTimerMain(str4);
+		endmin = _inputs.readInput();
+		_modules[0]->setLampTimeInterval(starthr, startmin, endhr, endmin);
+
+		message = "Timer sat til: (Start: ";
+		message += to_string(starthr);
+		message.append(":");
+		if (startmin < 10) {
+			message += to_string(0);
+			message += to_string(startmin);
+		}
+		else {
+			message += to_string(startmin);
+		}
+
+		message.append(") (Slut:");
+		message += to_string(endhr);
+		message.append(":");
+		if (endmin < 10) {
+			message += to_string(0);
+			message += to_string(endmin);
+		}
+		else {
+			message += to_string(endmin);
+		}
+		message.append(")");
+
+		_log.archiveNewActivity(message);
+		_TimerActive = true;
+		break;
+
+	case 2:
+		if (_TimerActive) {
+			_TimerActive = false;
+			_log.archiveNewActivity("Timer aktiveret");
+		}
+		else {
+			_TimerActive = true;
+			_log.archiveNewActivity("Timer deaktiveret");
+		}
+
+		break;
+	default:
+		break;
+	}
 
 }
 

@@ -25,13 +25,13 @@ public:
 	void standardFront(list<string> &choice);
 
 	//Login
-	void Login();
+	void login();
 
 	//Menu
-	void MainMenu();
+	void mainMenu();
 
 	//Logout
-	void Logout();
+	void logout();
 
 	//Activate system
 	void activateSystem();
