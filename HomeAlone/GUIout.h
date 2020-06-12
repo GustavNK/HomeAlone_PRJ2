@@ -12,7 +12,6 @@
 // 1.2 <15.05.20><GustavNK>	Names of defined pipes interfered with other lib. Renamed
 // 1.3 <18.05.20><GustavNK> Added counting to the printing of choice
 //========================================================================
-
 #pragma once
 #include <string>
 #include <iostream>
@@ -20,24 +19,20 @@
 #include <math.h>
 #include <stdlib.h>
 
-//Define a shortcut for the ASCII-pipes used
-
-
 using namespace std;
 
 class GUIout
 {
 public:
 	GUIout();
-	void draw(string &header, list<string> &mainLeft, list<string>& mainRight, list<string> &choice);
-	void draw(string &header, list<string> &main, list<string> &choice);
+	void draw(string &header, list<string> &mainLeft, list<string>& mainRight, list<string> &choice) const;
+	void draw(string &header, list<string> &main, list<string> &choice) const;
 private:
-	//Private methods
-	size_t determineLongestString(list<string>& list);
-	void drawText(string, size_t length);
-	void drawChoice(string, size_t length, int choiceCount);
-	void drawHeader(string header, size_t lengthOfBox);
-	void seperator(char l, char m, char r, size_t len);
+	size_t determineLongestString(list<string>& list) const;
+	void drawText(string, size_t length) const;
+	void drawChoice(string, size_t length, int choiceCount) const;
+	void drawHeader(string header, size_t lengthOfBox) const;
+	void seperator(char l, char m, char r, size_t len) const;
 
 	//Define a shortcut for the ASCII-pipes used
 	const char rtPipe = '\xBB';
