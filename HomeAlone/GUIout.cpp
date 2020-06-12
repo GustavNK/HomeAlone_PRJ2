@@ -16,11 +16,7 @@
 // Implement a line shift for the draw(string, list<string>, list<string>)
 //   to ensure the lines wont b to long
 //========================================================================
-
 #include "GUIout.h"
-
-
-using namespace std;
 
 //Empty constructor
 GUIout::GUIout()
@@ -31,7 +27,7 @@ GUIout::GUIout()
 // DESCR. : Takes the header, main body and choices, 
 //          and outputs the on the screen
 //============================================================= 
-void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRight, list<string>& choice)
+void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRight, list<string>& choice) const
 {
 	system("CLS");
 	size_t lengthOfText;
@@ -84,7 +80,7 @@ void GUIout::draw(string& header, list<string>& mainLeft, list<string>& mainRigh
 // DESCR. : Takes the header, main body and choices, 
 //          and outputs the on the screen
 //============================================================= 
-void GUIout::draw(string& header, list<string>& main, list<string>& choice)
+void GUIout::draw(string& header, list<string>& main, list<string>& choice) const
 {
 	system("CLS");
 	size_t lengthOfText;
@@ -125,7 +121,7 @@ void GUIout::draw(string& header, list<string>& main, list<string>& choice)
 // DESCR. : Ouputs 1 line of text with pipes and spaces on the sides
 //		    with correct seperation
 //============================================================= 
-void GUIout::drawText(string text, size_t lengthOfText)
+void GUIout::drawText(string text, size_t lengthOfText) const
 {
 	cout << vPipe << " " 
 		<< text;
@@ -142,7 +138,7 @@ void GUIout::drawText(string text, size_t lengthOfText)
 // DESCR. : Ouputs 1 line of text with pipes and spaces on the sides
 //		    with correct seperation. Adds the choice number first
 //============================================================= 
-void GUIout::drawChoice(string text, size_t lengthOfText, int choiceCount)
+void GUIout::drawChoice(string text, size_t lengthOfText, int choiceCount) const
 {
 	lengthOfText -= 3;
 
@@ -159,7 +155,7 @@ void GUIout::drawChoice(string text, size_t lengthOfText, int choiceCount)
 // METHOD : drawHeader
 // DESCR. : Outputs the header with proper spacing af pipes
 //============================================================= 
-void GUIout::drawHeader(string header, size_t lengthOfBox)
+void GUIout::drawHeader(string header, size_t lengthOfBox) const
 {
 	int blankSpace = (lengthOfBox - header.length()) / 2;
 
@@ -181,7 +177,7 @@ void GUIout::drawHeader(string header, size_t lengthOfBox)
 // METHOD : seperator 
 // DESCR. : Ouptut the seperator between lines 
 //============================================================= 
-void GUIout::seperator(char l, char m, char r, size_t len)
+void GUIout::seperator(char l, char m, char r, size_t len) const
 {
 	cout << l;
 	for (size_t i = 0; i < len; i++)
@@ -196,7 +192,7 @@ void GUIout::seperator(char l, char m, char r, size_t len)
 // DESCR. : Takes a list of strings, and determines, which string is
 //     the longest, and returns the length of the longest string
 //============================================================= 
-size_t GUIout::determineLongestString(list<string>& list)
+size_t GUIout::determineLongestString(list<string>& list) const
 {
 	size_t longest = 0;
 
