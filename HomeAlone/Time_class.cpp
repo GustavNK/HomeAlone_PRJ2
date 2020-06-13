@@ -35,12 +35,6 @@ void Time_class::setSec(int sec)
 }
 
 //Getter
-void Time_class::getTime_class(int& hours, int& minutes) const
-{
-	hours = _hr;
-	minutes = _min;
-}
-
 int Time_class::getHour() const
 {
 	return _hr;

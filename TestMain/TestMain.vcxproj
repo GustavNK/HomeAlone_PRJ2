@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="HomeAlone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeAlone\HomeAlone.vcxproj">

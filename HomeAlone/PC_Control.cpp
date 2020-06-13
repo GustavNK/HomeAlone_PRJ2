@@ -1,13 +1,7 @@
 /*
-Created by:
-	ART
-Date started:
-	06/05/2020
-Date finised:
-	--/--/2020
-
-
-
+Created by: ART
+Version: 1.1
+Date: 06/05/2020
 Project:
 	2. Semester : HomeAlone A/S
 */
@@ -32,14 +26,7 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 	_loggedIn = false;
 
 	//Whether a timer is active for a module
-	_TimerActive = false;
-	
-	//Controls while-loop in main. Set true to exit program
-	_Shutdown = false; 
-
-	//Initiate 1 lamp to list of modules.
-	
-
+	_TimerActive = false;	
 	
 }
 
@@ -47,9 +34,6 @@ PC_Control::PC_Control(bool systemStatus) : _inputs(Gui_In()), _output(GUIout())
 
 void PC_Control::updateGui() 
 {
-	
-	
-	
 	//Handle input
 	if (_loggedIn) {
 		mainMenu();
@@ -76,13 +60,11 @@ void PC_Control::updateGui()
 		//Show Log
 		case 4: 
 			showLog();
-			
 			break;
 
 		//Set Timer (Can currently only handle one lamp. Not final.)
 		case 5:
 			setTimer();
-
 			break;
 
 		default: 
@@ -177,7 +159,6 @@ void PC_Control::login()
 
 		//Exit
 	case 2:
-		_Shutdown = true;
 		exit(1);
 		break;
 
