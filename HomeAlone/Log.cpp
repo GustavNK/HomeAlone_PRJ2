@@ -8,7 +8,7 @@ Project: HomeAlone A/S
 #include <algorithm>
 #include "Log.h"
 
-int MAX_SIZE = 10;
+int MAX_SIZE = 50;
 
 Log::Log(bool autoText)
 {
