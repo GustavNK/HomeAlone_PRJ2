@@ -19,6 +19,7 @@ public:
 	void setUnit(int u); 
 	
 	virtual void setLampTimeInterval(int h1, int h2, int m1, int m2) = 0;
+	virtual string getTimeInterval() = 0;
 
 	virtual string getInfo(); 
 
